@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    //Array of guns :p
     Gun[] guns;
 
+//Liikkumisen ja kääntymisen nopeudet:
     public float moveSpeed = 3;
+    public float turnSpeed = 20;
 
+// Kääntymisen nollaus
+    private float timer = 0f;
+    public float resetTime = 0.2f;
+    private bool isRotating = false;
+    public float maxRotation = 45f;
+
+// Perusliikkuminen, "juoksu" ja ampuminen
     bool moveUp;
     bool moveDown;
     bool moveLeft;
@@ -27,7 +36,7 @@ public class Player : MonoBehaviour
         guns = transform.GetComponentsInChildren<Gun>();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         moveUp = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
@@ -38,7 +47,7 @@ public class Player : MonoBehaviour
         speedUp = Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift);
 
 
-        //Space ampuu kerran & LCTRL ampuu sarjaa
+        //Space ampuu kerran & LCTRL ampuu sarjaa. Tämä voidaan mahdollistaa esimerkiksi power-upilla.
         shoot = Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl);
         if (shoot)
         {
@@ -61,13 +70,29 @@ public class Player : MonoBehaviour
     }
         Vector2 move = Vector2.zero;
 
-    if (moveUp)
-    {
-        move.y += moveAmount;
+    if (moveUp) {
+    move.y += moveAmount;
+    float clampedTurnSpeed = Mathf.Clamp(turnSpeed * Time.deltaTime, -maxRotation, maxRotation);
+    transform.rotation *= Quaternion.AngleAxis(clampedTurnSpeed, Vector3.back);
+    isRotating = true;
+    timer = resetTime;
+}
+
+if (isRotating) {
+    timer -= Time.deltaTime;
+    if (timer <= 0) {
+        Quaternion targetRotation = Quaternion.Euler(0f, -90f, 0f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime);
+        if (transform.rotation == targetRotation) {
+            isRotating = false;
+        }
     }
+}
+    
     if (moveDown)
     {
         move.y -= moveAmount;
+        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.forward);
     }
     if (moveLeft)
     {
@@ -89,10 +114,6 @@ public class Player : MonoBehaviour
     moveMagnitude = Mathf.Sqrt(move.x * move.x + move.y * move.y);
 
     pos += move;
-
-
-
-
 
 
 
