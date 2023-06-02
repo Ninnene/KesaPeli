@@ -70,34 +70,62 @@ public class Player : MonoBehaviour
     }
         Vector2 move = Vector2.zero;
 
-    if (moveUp) {
-    move.y += moveAmount;
-    float clampedTurnSpeed = Mathf.Clamp(turnSpeed * Time.deltaTime, -maxRotation, maxRotation);
-    transform.rotation *= Quaternion.AngleAxis(clampedTurnSpeed, Vector3.back);
-    isRotating = true;
-    timer = resetTime;
-}
 
-if (isRotating) {
-    timer -= Time.deltaTime;
-    if (timer <= 0) {
-        Quaternion targetRotation = Quaternion.Euler(0f, -90f, 0f);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime);
-        if (transform.rotation == targetRotation) {
-            isRotating = false;
-        }
+
+
+    if (moveUp)
+    {
+        move.y += moveAmount; 
+        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.back);   //Kala kääntyy kun se liikkuu ylöspäin
+        isRotating = true;
+        timer = resetTime;
     }
-}
+        if(isRotating)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+            Quaternion targetRotation = Quaternion.Euler(0f, -90f, 0f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime); //Kala kääntyy takaisin kohti vakiopistettä.
+            if (transform.rotation == targetRotation) 
+            {   
+                isRotating = false;
+            }
+            }
+        }
     
+
+
     if (moveDown)
     {
-        move.y -= moveAmount;
-        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.forward);
+        move.y -= moveAmount; 
+        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.forward);   //Kala kääntyy kun se liikkuu ylöspäin
+        isRotating = true;
+        timer = resetTime;
     }
+        if(isRotating)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+            Quaternion targetRotation = Quaternion.Euler(0f, -90f, 0f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime); //Kala kääntyy takaisin kohti vakiopistettä.
+            if (transform.rotation == targetRotation) 
+            {   
+                isRotating = false;
+            }
+            }
+        }
+
+
+
     if (moveLeft)
     {
         move.x -= moveAmount;
     }
+
+
+
     if (moveRight)
     {
         move.x += moveAmount;
