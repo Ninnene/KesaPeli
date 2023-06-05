@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
     if (moveUp)
     {
         move.y += moveAmount; 
-        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.back);   //Kala kääntyy kun se liikkuu ylöspäin
+        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.forward);   //Kala kääntyy kun se liikkuu ylöspäin
         isRotating = true;
         timer = resetTime;
     }
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-            Quaternion targetRotation = Quaternion.Euler(0f, -90f, 0f);
+            Quaternion targetRotation = Quaternion.Euler(0f, 90f, 0f);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime); //Kala kääntyy takaisin kohti vakiopistettä.
             if (transform.rotation == targetRotation) 
             {   
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
     if (moveDown)
     {
         move.y -= moveAmount; 
-        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.forward);   //Kala kääntyy kun se liikkuu ylöspäin
+        transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.back);   //Kala kääntyy kun se liikkuu ylöspäin
         isRotating = true;
         timer = resetTime;
     }
@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-            Quaternion targetRotation = Quaternion.Euler(0f, -90f, 0f);
+            Quaternion targetRotation = Quaternion.Euler(0f, 90f, 0f);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime); //Kala kääntyy takaisin kohti vakiopistettä.
             if (transform.rotation == targetRotation) 
             {   
