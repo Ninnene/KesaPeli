@@ -41,9 +41,9 @@ public class IsoPahaKala : MonoBehaviour
 
         if (pos.x > 25.0568f )
         {
-            ipkTimer = +100f;
+            ipkTimer = +300;
 
-            ipkLeft = 10;
+            ipkLeft = 100;
 
             return;
         }
