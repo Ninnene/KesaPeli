@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         move.y -= moveAmount; 
         transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.back);   //Kala kääntyy kun se liikkuu alaspäin
 
-        if (gameObject.transform.eulerAngles.z < -60.0f)              //EN TAJUA MIKSI TÄMÄ EI TOIMI, Kun päinvastoin (ylös) se toimii. //EN TAJUA MIKSI TÄMÄ EI TOIMI, Kun päinvastoin (ylös) se toimii. 
+        if (gameObject.transform.eulerAngles.z > -60.0f)              //EN TAJUA MIKSI TÄMÄ EI TOIMI, Kun päinvastoin (ylös) se toimii. //EN TAJUA MIKSI TÄMÄ EI TOIMI, Kun päinvastoin (ylös) se toimii. 
         {
             gameObject.transform.rotation = Quaternion.Euler(0.0f, 90.0f, -60.0f);  
             Debug.Log("Rotaatio" + transform.rotation + "kulma" + transform.eulerAngles);
@@ -121,12 +121,13 @@ public class Player : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-            Quaternion targetRotation = Quaternion.Euler(0f, 90f, 0f);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime); //Kala kääntyy takaisin kohti vakiopistettä.
-            if (transform.rotation == targetRotation) 
-            {   
-                isRotating = false;
-            }
+                Quaternion targetRotation = Quaternion.Euler(0f, 90f, 0f);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * 10 * Time.deltaTime); //Kala kääntyy takaisin kohti vakiopistettä.
+            
+                    if (transform.rotation == targetRotation) 
+                    {   
+                        isRotating = false;
+                    }
             }
         }
 
