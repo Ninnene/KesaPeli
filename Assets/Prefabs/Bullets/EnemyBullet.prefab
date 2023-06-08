@@ -8,21 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream:Assets/Prefabs/Bullets/EnemyBullet.prefab
   - component: {fileID: 8440771024457080359}
   - component: {fileID: 8336786014367221844}
   - component: {fileID: 5918306190706900442}
   - component: {fileID: 6625344616778981329}
   - component: {fileID: 5740111021726021133}
-=======
-  - component: {fileID: 304683451076366253}
-  - component: {fileID: 3717062237468737544}
-  - component: {fileID: 1473063147027248322}
-  - component: {fileID: 4198321661677536259}
-  - component: {fileID: 2244271897546221512}
-  - component: {fileID: 5188549985914726813}
-  - component: {fileID: 3941972070088170472}
->>>>>>> Stashed changes:Assets/Materials/Prefabs/Enemies/MOBkala.prefab
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -120,55 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1f66158a8cd7745b9b49c8c4642009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream:Assets/Prefabs/Bullets/EnemyBullet.prefab
   direction: {x: 1, y: 0}
   speed: 5
   velocity: {x: 0, y: 0}
   isEnemy: 1
-=======
-  moveSpeed: 5
---- !u!114 &2244271897546221512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112850149562422551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f57416316e90a1541ab541dfa5eee1d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amplitude: 2
-  frequency: 2
-  inverted: 0
---- !u!54 &5188549985914726813
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112850149562422551}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!65 &3941972070088170472
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112850149562422551}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0075913263, y: 0.0013093189, z: 0.018688424}
-  m_Center: {x: 0.0005072534, y: -0.0004400248, z: -0.00075916614}
->>>>>>> Stashed changes:Assets/Materials/Prefabs/Enemies/MOBkala.prefab
