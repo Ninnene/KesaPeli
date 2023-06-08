@@ -10,7 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5933276532860828605}
   - component: {fileID: 5933276532860828604}
+<<<<<<< Updated upstream:Assets/Prefabs/Bullets/BulletType1.prefab
   - component: {fileID: -1402956531090004155}
+=======
+  - component: {fileID: -8463012741903017261}
+>>>>>>> Stashed changes:Assets/Materials/Prefabs/Bullets/BulletType1.prefab
   m_Layer: 0
   m_Name: BulletType1
   m_TagString: Untagged
@@ -49,7 +53,11 @@ MonoBehaviour:
   direction: {x: 1, y: 0}
   speed: 12
   velocity: {x: 0, y: 0}
+<<<<<<< Updated upstream:Assets/Prefabs/Bullets/BulletType1.prefab
 --- !u!65 &-1402956531090004155
+=======
+--- !u!65 &-8463012741903017261
+>>>>>>> Stashed changes:Assets/Materials/Prefabs/Bullets/BulletType1.prefab
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,7 +65,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5933276532860828602}
   m_Material: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Prefabs/Bullets/BulletType1.prefab
   m_IsTrigger: 0
+=======
+  m_IsTrigger: 1
+>>>>>>> Stashed changes:Assets/Materials/Prefabs/Bullets/BulletType1.prefab
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -87,8 +99,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5933276533403373201}
+<<<<<<< Updated upstream:Assets/Prefabs/Bullets/BulletType1.prefab
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.12}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes:Assets/Materials/Prefabs/Bullets/BulletType1.prefab
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
