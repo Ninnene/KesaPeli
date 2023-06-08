@@ -6,6 +6,7 @@ public class Destructable : MonoBehaviour
 {
     bool canBeDestoyed = false;
     
+    
     void Start()
     {
         
@@ -32,8 +33,12 @@ public class Destructable : MonoBehaviour
         Bullet bullet = collision.GetComponent<Bullet>();
         if (bullet != null)
         {
+            if (!bullet.isEnemy)
+            {
             Destroy(gameObject);
             Destroy(bullet.gameObject);
+            }
+            
         }
     }
 

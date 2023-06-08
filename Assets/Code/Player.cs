@@ -107,21 +107,10 @@ public class Player : MonoBehaviour
         move.y -= moveAmount; 
         transform.rotation *= Quaternion.AngleAxis(turnSpeed * Time.deltaTime, Vector3.back);   //Kala kääntyy kun se liikkuu alaspäin
 
-        Debug.Log("Tranform.Rotaatio" + transform.rotation + "Euler-kulma" + transform.eulerAngles);
-        //Tranform.Rotaatio(-0.43922, 0.55416, -0.43922, 0.55416)Euler-kulma(0.00, 90.00, 283.20)
-
         if (gameObject.transform.eulerAngles.z < 300.0f)
         {
             gameObject.transform.rotation = Quaternion.Euler(0.0f, 90.0f, -60.0f);
         }
-
-
-
-        //Tranform.Rotaatio(-0.39131, 0.58896, -0.39131, 0.58896)Euler-kulma(0.00, 90.00, 292.80)
-
-
-
-
 
         isRotating = true;
         timer = resetTime;
@@ -189,10 +178,30 @@ if (pos.y <= 1.159951f )
         pos.y = 9.15995f;
     }
     transform.position = pos;
-
-
-
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        Bullet bullet = collision.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            
+            if (bullet.isEnemy)
+            {
+            Destroy(gameObject);
+            Destroy(bullet.gameObject);
+            }
+        }
+
+        Destructable destructable = collision.GetComponent<Destructable>();
+        {
+           if (destructable != null)
+           {
+            Destroy(gameObject);
+            Destroy(destructable.gameObject);
+           }
+        }
+
+    }
 
 }
