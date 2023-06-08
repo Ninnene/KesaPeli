@@ -182,6 +182,7 @@ if (pos.y <= 1.159951f )
 
     private void OnTriggerEnter(Collider collision)
     {
+
         Bullet bullet = collision.GetComponent<Bullet>();
         if (bullet != null)
         {

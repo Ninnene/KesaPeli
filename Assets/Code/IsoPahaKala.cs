@@ -30,6 +30,7 @@ public class IsoPahaKala : MonoBehaviour
         }
     }
 
+
     void IpkGoBack()
     {
 
@@ -52,6 +53,14 @@ public class IsoPahaKala : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
 
+        Player player = collision.GetComponent<Player>();
+        if (player != null)
+        {
+            Destroy(player.gameObject);
+        }
+    }
        
 }
