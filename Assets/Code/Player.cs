@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
     {   
         // Kun Player luodaan sceneen etsitään kaikki aseet jotka ovat siinä kiinni (in children)
         guns = transform.GetComponentsInChildren<Gun>();
+        foreach (Gun gun in guns)
+        {
+            gun.isActive = true;
+        }
     }
 
    

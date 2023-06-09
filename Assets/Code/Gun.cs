@@ -16,7 +16,8 @@ public class Gun : MonoBehaviour
     float shootTimer = 0f;
     float delayTimer = 0f;
     
-// Enemy shooting variables /
+// Ase aktivoituu vain kun ehto Destructable-koodissa täyttyy
+    public bool isActive = false;
 
 
     // Start is called before the first frame update
@@ -28,12 +29,21 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        if (!isActive)
+        {
+            return;
+        }
+
+
         direction = (transform.localRotation * Vector2.right).normalized;
 
         // Autoshoot :
 
         if (autoShoot)
        {
+
+            
             if (delayTimer >= shootIntervalSeconds)
             {
                 if(shootTimer >= shootIntervalSeconds)

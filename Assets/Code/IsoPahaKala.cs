@@ -8,13 +8,21 @@ public class IsoPahaKala : MonoBehaviour
     public float ipkSpeed = 5f;
     public float ipkLeft = 100f;
     public float ipkTimer = 1000f;
+    public float ipkFiringTime = 100f;
 
     private void FixedUpdate()
     {
+
         ipkTimer -= 1f;
 
         if (ipkTimer <=0)
         {
+             Gun[] guns = transform.GetComponentsInChildren<Gun>();
+            foreach (Gun gun in guns)
+            {
+                gun.isActive = true;  //tämä viittaa isActive booliin Gun-koodissa
+            }
+
             Vector2 pos = transform.position;
 
             pos.x -= ipkSpeed * Time.fixedDeltaTime;
@@ -26,13 +34,24 @@ public class IsoPahaKala : MonoBehaviour
         }
         if (ipkLeft <= 0)
         {
+        
+            ipkFiringTime -=1;
+            if(ipkFiringTime <= 0)
+            {
             IpkGoBack();
-        }
+            }
+        };
     }
 
 
     void IpkGoBack()
     {
+
+        Gun[] guns = transform.GetComponentsInChildren<Gun>();
+            foreach (Gun gun in guns)
+            {
+                gun.isActive = false;  //tämä viittaa isActive booliin Gun-koodissa
+            }
 
         Vector2 pos = transform.position;
 
@@ -46,10 +65,13 @@ public class IsoPahaKala : MonoBehaviour
 
             ipkLeft = 100;
 
+            ipkFiringTime = 100;
+
             return;
         }
 
         transform.position = pos;
+
 
     }
 

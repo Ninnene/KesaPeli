@@ -12,11 +12,18 @@ public class Destructable : MonoBehaviour
         
     }
 
+    // Ase ei ole aktiivinen ennen kuin se on ruudulla
+
     void Update()
     {
-        if(transform.position.x < 20.15367)
+        if(transform.position.x < 20.15367 && !canBeDestoyed)
         {
             canBeDestoyed = true;
+            Gun[] guns = transform.GetComponentsInChildren<Gun>();
+            foreach (Gun gun in guns)
+            {
+                gun.isActive = true;  //tämä viittaa isActive booliin Gun-koodissa
+            }
         }
     }
 
