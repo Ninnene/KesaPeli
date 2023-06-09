@@ -104,6 +104,7 @@ MonoBehaviour:
   ipkSpeed: 5
   ipkLeft: 100
   ipkTimer: 1000
+  ipkFiringTime: 100
 --- !u!65 &2637563585863011447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 5740111021726021133, guid: 68eec986db4deba45961a818ab85bb5f, type: 3}
   autoShoot: 1
-  shootIntervalSeconds: 0.5
+  shootIntervalSeconds: 1
   shootDelay: 0
   isActive: 0
 --- !u!1 &6685078320437402987
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 5740111021726021133, guid: 68eec986db4deba45961a818ab85bb5f, type: 3}
   autoShoot: 1
-  shootIntervalSeconds: 0.5
+  shootIntervalSeconds: 1
   shootDelay: 0
   isActive: 0
 --- !u!1 &6685078321593851017
@@ -277,6 +278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 5740111021726021133, guid: 68eec986db4deba45961a818ab85bb5f, type: 3}
   autoShoot: 1
-  shootIntervalSeconds: 0.5
+  shootIntervalSeconds: 1
   shootDelay: 0
   isActive: 0

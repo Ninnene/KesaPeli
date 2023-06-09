@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Destructable : MonoBehaviour
 {
     bool canBeDestoyed = false;
+    public int scoreValue = 100;
     
     
     void Start()
     {
-        
+     LevelController.instance.AddDestructable();  //Tällä haetaan LevelController-koodi (Sen alussa on kohta "Private void Awake: instance this;" )
     }
 
     // Ase ei ole aktiivinen ennen kuin se on ruudulla
@@ -35,19 +37,25 @@ public class Destructable : MonoBehaviour
             return;
         }
 
-        Debug.Log("Pam!");
 
         Bullet bullet = collision.GetComponent<Bullet>();
         if (bullet != null)
         {
             if (!bullet.isEnemy)
             {
+
+            LevelController.instance.AddScore(scoreValue); 
+
             Destroy(gameObject);
             Destroy(bullet.gameObject);
+            
             }
             
         }
     }
 
-
+        private void OnDestroy() 
+        {
+            LevelController.instance.RemoveDestructable();
+        }
 }

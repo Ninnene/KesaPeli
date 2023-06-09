@@ -15,21 +15,31 @@ public class IsoPahaKala : MonoBehaviour
 
         ipkTimer -= 1f;
 
-        if (ipkTimer <=0)
+        if (ipkTimer <= 40)
         {
-             Gun[] guns = transform.GetComponentsInChildren<Gun>();
+            Gun[] guns = transform.GetComponentsInChildren<Gun>();
             foreach (Gun gun in guns)
             {
-                gun.isActive = true;  //tämä viittaa isActive booliin Gun-koodissa
+            gun.isActive = true;  //tämä viittaa isActive booliin Gun-koodissa
             }
+        }
 
+        if (ipkTimer <=0)
+        {
             Vector2 pos = transform.position;
 
             pos.x -= ipkSpeed * Time.fixedDeltaTime;
 
             ipkLeft -= 1f;
 
+            if (pos.x <=11.0568)
+            {
+                ipkLeft = 0;
+            }
+
              transform.position = pos;
+
+            
 
         }
         if (ipkLeft <= 0)

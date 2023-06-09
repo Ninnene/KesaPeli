@@ -48,7 +48,6 @@ public class Gun : MonoBehaviour
             {
                 if(shootTimer >= shootIntervalSeconds)
                 {
-                    Debug.Log("Shooty!");
                     Shoot();
                     shootTimer = 0;
                 }

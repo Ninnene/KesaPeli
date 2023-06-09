@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class Player : MonoBehaviour
 {
@@ -190,7 +192,6 @@ if (pos.y <= 1.159951f )
         Bullet bullet = collision.GetComponent<Bullet>();
         if (bullet != null)
         {
-            
             if (bullet.isEnemy)
             {
             Destroy(gameObject);
