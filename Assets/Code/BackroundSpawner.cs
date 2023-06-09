@@ -12,18 +12,15 @@ public class BackroundSpawner : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
-        Debug.Log("Start Initial position = " + initialPosition);
     }
 
 
 
     private void FixedUpdate()
     {
-        Debug.Log("Fixed update Initial position = " + initialPosition);
-
         /*if (!gameObject)
         {
-            Instantiate(gameObject, initialPosition, Quaternion.identity);      Yritin aluksi ihann liian monimutkaisesti.
+            Instantiate(gameObject, initialPosition, Quaternion.identity);      Yritin aluksi liian monimutkaisesti. Saatan tarvita instantiatea jos saisin childit muuttamaan paikkaa.
             Debug.Log("Instantiate Initial position = " + initialPosition);
         }
         else*/
@@ -36,9 +33,7 @@ public class BackroundSpawner : MonoBehaviour
 
         if (position.x <-3)
         {
-            transform.position = initialPosition;
-            Debug.Log("Destroyed Initial position = " + initialPosition);
-            return;
+             transform.position = new Vector2(Random.Range(initialPosition.x - 1, initialPosition.x + 1), Random.Range(initialPosition.y - 1f, initialPosition.y + 2.5f));
         }
         }
     }
