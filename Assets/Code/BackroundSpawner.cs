@@ -12,19 +12,22 @@ public class BackroundSpawner : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
+        Debug.Log("Start Initial position = " + initialPosition);
     }
 
 
 
     private void FixedUpdate()
     {
-        if (!gameObject)
-        {
-            Instantiate(gameObject, initialPosition, Quaternion.identity);
-        }
-        else
-        {
+        Debug.Log("Fixed update Initial position = " + initialPosition);
 
+        /*if (!gameObject)
+        {
+            Instantiate(gameObject, initialPosition, Quaternion.identity);      Yritin aluksi ihann liian monimutkaisesti.
+            Debug.Log("Instantiate Initial position = " + initialPosition);
+        }
+        else*/
+        
         Vector2 position = transform.position;
 
         position.x -= moveSpeed * Time.fixedDeltaTime;
@@ -33,11 +36,10 @@ public class BackroundSpawner : MonoBehaviour
 
         if (position.x <-3)
         {
-            Destroy(gameObject);
-            
+            transform.position = initialPosition;
+            Debug.Log("Destroyed Initial position = " + initialPosition);
             return;
         }
         }
     }
         
-}
