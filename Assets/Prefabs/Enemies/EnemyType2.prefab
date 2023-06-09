@@ -48,6 +48,7 @@ MonoBehaviour:
   autoShoot: 1
   shootIntervalSeconds: 2
   shootDelay: 0.1
+  isActive: 0
 --- !u!1 &4219127423276338357
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
   autoShoot: 1
   shootIntervalSeconds: 2
   shootDelay: 0
+  isActive: 0
 --- !u!1 &5547751906156712252
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5547751906156712252}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: -0.5}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 15.278671, y: -1.0507259, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -135,7 +137,7 @@ Transform:
   - {fileID: 1666622850318339946}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!33 &8077656520881914915
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -242,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888cb92691b32ab478dd779267907d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
 --- !u!65 &7761130034397589445
 BoxCollider:
   m_ObjectHideFlags: 0

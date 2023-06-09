@@ -6,7 +6,7 @@ public class BackroundSpawner : MonoBehaviour
 {
    
    public float moveSpeed = 5;
-   Vector2 initialPosition;
+   Vector3 initialPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class BackroundSpawner : MonoBehaviour
         }
         else*/
         
-        Vector2 position = transform.position;
+        Vector3 position = transform.position;
 
         position.x -= moveSpeed * Time.fixedDeltaTime;
 
@@ -33,7 +33,7 @@ public class BackroundSpawner : MonoBehaviour
 
         if (position.x <-3)
         {
-             transform.position = new Vector2(Random.Range(initialPosition.x - 1, initialPosition.x + 1), Random.Range(initialPosition.y - 1f, initialPosition.y + 2.5f));
+             transform.position = new Vector3(Random.Range(initialPosition.x - 1, initialPosition.x + 1), Random.Range(initialPosition.y - 1f, initialPosition.y + 2.5f),Random.Range(initialPosition.z - 0f, initialPosition.z +0 ));
         }
         }
     }
