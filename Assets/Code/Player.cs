@@ -29,11 +29,18 @@ public class Player : MonoBehaviour
 
     bool shoot;
 
-
+    //Kilpi
+    GameObject shield;
+   
 
 
     void Start()
     {   
+        
+        shield = transform.Find("Shield").gameObject;
+        DeactivateShield();
+
+
         // Kun Player luodaan sceneen etsitään kaikki aseet jotka ovat siinä kiinni (in children)
         guns = transform.GetComponentsInChildren<Gun>();
         foreach (Gun gun in guns)
@@ -186,6 +193,23 @@ if (pos.y <= 1.159951f )
     transform.position = pos;
     }
 
+
+     // Kilpi
+    void ActivateShield()
+    {
+        shield.SetActive(true);
+    }
+    void DeactivateShield()
+    {
+        shield.SetActive(false);
+    }
+    bool HasShield ()
+    {
+        return shield.activeSelf;
+    }
+        // Kilpi /
+
+
     private void OnTriggerEnter(Collider collision)
     {
 
@@ -203,11 +227,21 @@ if (pos.y <= 1.159951f )
         {
            if (destructable != null)
            {
+            if (HasShield())
+            {
+                DeactivateShield();
+            }
+            else
+            {
             Destroy(gameObject);
+            }
             Destroy(destructable.gameObject);
+            
            }
         }
 
     }
+
+       
 
 }

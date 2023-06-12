@@ -2,19 +2,39 @@ using UnityEngine;
 
 public class AttackPlayer : MonoBehaviour
 {
-    // The target position to move towards
+    // Valitse kohde (Inspector)
     public Transform target;
 
-    // The speed of movement in units per second
+    // Liikkumisnopeus
     public float speed = 5f;
 
-    // Update is called once per frame
+    
     void Update()
     {
+
+        if (target != null)
+        {
         // Calculate the maximum distance to move per frame
         float maxDistanceDelta = speed * Time.deltaTime;
 
-        // Move the object towards the target position
+        // Liikuta objetia (.this) päin kahdetta. (target.position)
         transform.position = Vector3.MoveTowards(transform.position, target.position, maxDistanceDelta);
+        }
+        if (!target)
+        {
+        speed = 0.2f;
+
+        Vector2 position = transform.position;
+
+        position.x -= speed * Time.fixedDeltaTime;
+
+        transform.position = position;
+
+        if (position.x <-3)
+        {
+            Destroy(gameObject);
+        }
+        }
+
     }
 }
