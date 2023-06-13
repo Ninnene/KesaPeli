@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     //Kilpi
     GameObject shield;
+    int powerUpGunLevel = 0;
    
 
 
@@ -46,6 +47,11 @@ public class Player : MonoBehaviour
         foreach (Gun gun in guns)
         {
             gun.isActive = true;
+
+            if (gun.powerUpLeveleRequirement != 0)
+            {
+                gun.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -67,7 +73,10 @@ public class Player : MonoBehaviour
             shoot = false;
             foreach(Gun gun in guns)
             {
+                if(gun.gameObject.activeSelf)
+                {
                 gun.Shoot();
+                }
             }
         }
     }
@@ -210,6 +219,25 @@ if (pos.y <= 1.159951f )
         // Kilpi /
 
 
+    //AsePowerUp;
+
+     void AddGuns()
+     {
+        powerUpGunLevel++;
+        foreach(Gun gun in guns)
+        {
+            if(gun.powerUpLeveleRequirement == powerUpGunLevel)
+            {
+                gun.gameObject.SetActive(true);
+            }
+        } 
+     }
+
+     void IncreaseSpeed()
+     {
+        moveSpeed *= 2;
+     }
+
     private void OnTriggerEnter(Collider collision)
     {
 
@@ -235,13 +263,31 @@ if (pos.y <= 1.159951f )
             {
             Destroy(gameObject);
             }
+
             Destroy(destructable.gameObject);
             
            }
         }
 
+
+        PowerUp powerUp = collision.GetComponent<PowerUp>();
+        if (powerUp)
+        {
+            if (powerUp.activateShield)
+            {
+                ActivateShield();
+            }
+            if (powerUp.addGuns)
+            {
+                AddGuns();
+            }
+            if (powerUp.increaseSpeed)
+            {
+                IncreaseSpeed();
+            }
+            Destroy(powerUp.gameObject);
+            
+        }
+
     }
-
-       
-
 }

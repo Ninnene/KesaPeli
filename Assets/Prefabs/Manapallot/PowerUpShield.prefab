@@ -11,8 +11,11 @@ GameObject:
   - component: {fileID: 7497899083362286896}
   - component: {fileID: 6891132952798179989}
   - component: {fileID: 8666842823545767519}
+  - component: {fileID: 1451434297781458822}
+  - component: {fileID: 2190621397993156547}
+  - component: {fileID: 5710887371758706263}
   m_Layer: 0
-  m_Name: "ManaPallo PunaVihre\xE4"
+  m_Name: PowerUpShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,3 +86,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1451434297781458822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153462031859410826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160cc35ebd9ae5e43a69f65f7600157c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &2190621397993156547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153462031859410826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054a15e955a41df4c8914bd432958293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateShield: 1
+  addGuns: 0
+  increaseSpeed: 0
+--- !u!135 &5710887371758706263
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153462031859410826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009999999
+  m_Center: {x: -0.004382403, y: -9.313225e-10, z: 2.7755576e-17}

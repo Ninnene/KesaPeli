@@ -5,6 +5,8 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
 
+    public int powerUpLeveleRequirement = 0;
+
     public Bullet bullet;
     Vector2 direction;
     
