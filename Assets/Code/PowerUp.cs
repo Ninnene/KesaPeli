@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    public int pointValue = 10000;
     public bool activateShield;
     public bool addGuns;
     public bool increaseSpeed;

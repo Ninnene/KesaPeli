@@ -1212,6 +1212,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 909e0a1df2c0a784ca2ca11e8651105e, type: 2}
@@ -1272,6 +1276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd25c1394114ae46a6010fc3cd87c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hits: 3
+  Renderer: {fileID: 0}
   moveSpeed: 3
   turnSpeed: 60
   resetTime: 0.2

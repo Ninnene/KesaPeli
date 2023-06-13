@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054a15e955a41df4c8914bd432958293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointValue: 0
   activateShield: 0
   addGuns: 1
   increaseSpeed: 0

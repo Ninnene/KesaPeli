@@ -9,6 +9,15 @@ public class Player : MonoBehaviour
     //Array of guns :p
     Gun[] guns;
 
+
+// Hiparit :
+    public int hits = 3;
+    bool invincible = false;
+    float invincibleTimer = 0;
+    public float invincibleTime = 2;
+
+
+
 //Liikkumisen ja kääntymisen nopeudet:
     public float moveSpeed = 3;
     public float turnSpeed = 20;
@@ -28,6 +37,13 @@ public class Player : MonoBehaviour
     bool speedUp;
 
     bool shoot;
+
+    public Renderer Renderer;
+
+    private void Awake()
+    {
+       // renderer = transform.Find("Renderer").GetComponent<Renderer>();
+    }
 
     //Kilpi
     GameObject shield;
@@ -79,6 +95,24 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (invincible)
+        {
+
+            if(invincibleTimer >= invincibleTime)
+            {
+                invincibleTimer = 0;
+                invincible = false;
+                Renderer.enabled = true;
+            }
+                else
+                {
+                    invincibleTimer += Time.deltaTime;
+                    Renderer.enabled =! Renderer.enabled;
+                }
+            
+        }
+
     }
 
     private void FixedUpdate()
@@ -238,6 +272,41 @@ if (pos.y <= 1.159951f )
         moveSpeed *= 2;
      }
 
+
+    private void ResetShip() 
+    {
+        Destroy(gameObject);
+    }
+
+    void Hit(GameObject gameObjectHit)
+    {
+        if (HasShield())
+        {
+            DeactivateShield();
+        }
+        else
+        {
+            if (!invincible)
+            {   
+                Debug.Log("Invincible!");
+
+                hits--;
+                Debug.Log("Hits left: " + hits);
+
+                if(hits == 0)
+                {
+                    ResetShip();
+                }
+                else
+                {
+                    invincible = true;
+                }
+                Destroy(gameObjectHit);
+            }
+        }
+    }
+
+        // Collisions :
     private void OnTriggerEnter(Collider collision)
     {
 
@@ -246,28 +315,16 @@ if (pos.y <= 1.159951f )
         {
             if (bullet.isEnemy)
             {
-            Destroy(gameObject);
-            Destroy(bullet.gameObject);
+            Hit(bullet.gameObject);
             }
         }
 
         Destructable destructable = collision.GetComponent<Destructable>();
-        {
            if (destructable != null)
            {
-            if (HasShield())
-            {
-                DeactivateShield();
-            }
-            else
-            {
-            Destroy(gameObject);
-            }
-
-            Destroy(destructable.gameObject);
-            
+            Hit(destructable.gameObject);
            }
-        }
+        
 
 
         PowerUp powerUp = collision.GetComponent<PowerUp>();
@@ -285,6 +342,7 @@ if (pos.y <= 1.159951f )
             {
                 IncreaseSpeed();
             }
+            LevelController.instance.AddScore(powerUp.pointValue);
             Destroy(powerUp.gameObject);
             
         }
