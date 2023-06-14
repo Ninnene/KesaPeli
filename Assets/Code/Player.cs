@@ -6,6 +6,9 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+
+    Vector2 initialPosition;
+
     //Array of guns :p
     Gun[] guns;
 
@@ -21,6 +24,9 @@ public class Player : MonoBehaviour
 //Liikkumisen ja kääntymisen nopeudet:
     public float moveSpeed = 3;
     public float turnSpeed = 20;
+
+// Tätä speed-arvoa tarvitaan kun resetoidaan speed-bonuksia
+    float speedMultiplier = 1;
 
 // Kääntymisen nollaus
     private float timer = 0f;
@@ -42,6 +48,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        initialPosition = transform.position;
+
        // renderer = transform.Find("Renderer").GetComponent<Renderer>();
     }
 
@@ -53,7 +61,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {   
-        
+
         shield = transform.Find("Shield").gameObject;
         DeactivateShield();
 
@@ -119,7 +127,7 @@ public class Player : MonoBehaviour
     {
         Vector2 pos = transform.position;
 
-        float moveAmount = moveSpeed * Time.fixedDeltaTime;
+        float moveAmount = moveSpeed * speedMultiplier * Time.fixedDeltaTime;
         if (speedUp)
     {
         moveAmount *= 3;
@@ -260,22 +268,32 @@ if (pos.y <= 1.159951f )
         powerUpGunLevel++;
         foreach(Gun gun in guns)
         {
-            if(gun.powerUpLeveleRequirement == powerUpGunLevel)
+            if(gun.powerUpLeveleRequirement <= powerUpGunLevel)
             {
                 gun.gameObject.SetActive(true);
+            }
+            else 
+            {
+                gun.gameObject.SetActive(false);
             }
         } 
      }
 
-     void IncreaseSpeed()
+     void SetSpeedMultiplier(float mult)
      {
-        moveSpeed *= 2;
+        speedMultiplier = mult;
      }
 
 
-    private void ResetShip() 
+    void ResetShip() 
     {
-        Destroy(gameObject);
+        transform.position = initialPosition;
+        DeactivateShield();
+        powerUpGunLevel = -1;
+        AddGuns();
+        SetSpeedMultiplier(1);
+        hits = 3;
+        LevelController.instance.ResetLevel();
     }
 
     void Hit(GameObject gameObjectHit)
@@ -340,7 +358,7 @@ if (pos.y <= 1.159951f )
             }
             if (powerUp.increaseSpeed)
             {
-                IncreaseSpeed();
+                SetSpeedMultiplier(speedMultiplier +1);
             }
             LevelController.instance.AddScore(powerUp.pointValue);
             Destroy(powerUp.gameObject);

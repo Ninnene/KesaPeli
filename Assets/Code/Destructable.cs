@@ -18,6 +18,13 @@ public class Destructable : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.x <-3)
+        {
+            LevelController.instance.RemoveDestructable();
+            Destroy(gameObject);
+        }
+
+
         if(transform.position.x < 20.15367 && !canBeDestoyed)
         {
             canBeDestoyed = true;
@@ -45,7 +52,7 @@ public class Destructable : MonoBehaviour
             {
 
             LevelController.instance.AddScore(scoreValue); 
-
+            LevelController.instance.RemoveDestructable();
             Destroy(gameObject);
             Destroy(bullet.gameObject);
             
@@ -54,8 +61,5 @@ public class Destructable : MonoBehaviour
         }
     }
 
-        private void OnDestroy() 
-        {
-            LevelController.instance.RemoveDestructable();
-        }
+        
 }

@@ -78,6 +78,21 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    public void ResetLevel()
+    {
+        Debug.LogFormat("ResetLevel");
+
+        foreach(Bullet b in GameObject.FindObjectsOfType<Bullet>())  // Etsitään kaikki luodit scenestä jotta ne voidaan hävittää.
+        {
+            Destroy(b.gameObject);
+        }
+        numDestructables = 0;
+        score = 0;
+        AddScore(score);
+        string sceneName = levels[currentLevel -1];
+        SceneManager.LoadScene(sceneName);  
+    }
+
 
     public void AddScore(int scoreValue)
     {

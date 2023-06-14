@@ -34,14 +34,6 @@ public class MoveRightLeft : MonoBehaviour
 
         transform.position = position;
 
-        if (position.x <-3)
-        {
-            Destroy(gameObject);
-        }
-
-        
-
-
     }
 
 

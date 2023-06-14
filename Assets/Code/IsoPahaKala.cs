@@ -125,7 +125,7 @@ public class IsoPahaKala : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            Destroy(player.gameObject);
+            LevelController.instance.ResetLevel();
         }
     }
        
