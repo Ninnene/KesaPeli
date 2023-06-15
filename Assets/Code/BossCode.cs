@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossCode : MonoBehaviour
 {
 
+    // IPK ampumisvaihe
+
     Vector3 spawnPosition;
     Vector3 attackPositionStart;
 
@@ -16,21 +18,50 @@ public class BossCode : MonoBehaviour
 
     bool spawnIPK = true;
 
-
-
+    float middleAttackDone = 0;
 
     bool attackMiddle = false;
-    float repeatMiddleAttack = 0;
+    public float repeatMiddleAttack = 8;
 
+
+
+    // IPK ylös - alas - hyökkäysvaihe
+
+    bool startIPKUpDownAttack = false;
+
+    public GameObject iPKUp;
+
+    public GameObject iPKDown;
+
+
+    float repeatUpDownAttack = 0;
+
+
+    Vector3 iPKUpStartPosition;
+
+    Vector3 iPKDownStartPosition;
+
+
+
+    Vector3 iPKUpMoveTillRight = new Vector3(-0.49000001f,21.1800003f,-14.04f);
+
+    Vector3 iPKDownMoveTillLeft = new Vector3(18.5400009f,-11.5900002f,-14.04f);
+
+    
 
 
     bool attackUp = false;
     bool attackDown = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        spawnPosition = transform.position;
+        spawnPosition = transform.position;  // IPK ampumisvaiheen aloituspaikka
+
+        iPKUpStartPosition = iPKUp.transform.position;  // IPK ylhääällä aloituspaikka
+
+        iPKDownStartPosition = iPKDown.transform.position;  // IPK alhaalla aloituspaikka
     }
 
     // Update is called once per frame
@@ -47,22 +78,30 @@ public class BossCode : MonoBehaviour
     if (transform.position == attackPositionStart && !attackMiddle)
     {
     
-    
     spawnIPK = false;
 
     Debug.Log("spawnIPK = " + spawnIPK);
 
     attackMiddle = true;
 
-    
-
     StartCoroutine(AttackMiddle()); // start the coroutine
     }
-        
+    
+    if (startIPKUpDownAttack == true)
+    {
+    StartCoroutine(AttackUpDown()); // start the second coroutine
     }
+
+
+
+    }
+
+    
 
     IEnumerator AttackMiddle()
     {    
+
+        Debug.Log("Start AttackMiddle");
 
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
@@ -106,107 +145,117 @@ public class BossCode : MonoBehaviour
         
         Debug.Log("Return to spawnposition");
 
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+
         while (transform.position != spawnPosition)
         {
         transform.position = Vector3.MoveTowards(transform.position, spawnPosition, iPKSpeed * Time.deltaTime);
         yield return null;
         }
+        
             if(transform.position == spawnPosition && repeatMiddleAttack >= 10)
             {
+            ++middleAttackDone;
 
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            Debug.Log("Yield break!");
+            startIPKUpDownAttack = true;
+
+            Debug.Log("Yield break!" + middleAttackDone);
             yield break;
             }
         }
         }
         }
-
-        /*Debug.Log("Start : moveTillUp = " + moveTillUp);
-
-            if(transform.position == moveTillUp) 
-            {
-                attackMiddle = false;
-                 yield break;
-            }*/
     }
 
-
-
-    /*IEnumerator AttackMiddle()
-        {
-        Debug.Log("Middle attack start!");
-
-        while (attackMiddle) // loop until attackMiddle is false
-        {
-            Vector3 position = transform.position;
-
-            position.y -= iPKSpeed * Time.fixedDeltaTime;
-
-            transform.position = position;
-
-            // Check if position.y is too low
-            if(position.y < 1.38)
-            {
-                Debug.Log("Position Y is " + position.y);
-
-                // Move up
-                position.y += iPKSpeed * Time.fixedDeltaTime;
-
-                transform.position = position;
-
-                // Check if position.y is too high
-                if(position.y > 10.75)
-                {
-                    // Increment repeat counter
-                    ++repeatMiddleAttack;
-
-                    // Check if repeat limit is reached
-                    if(repeatMiddleAttack >= 5)
-                    {
-                        // Stop the attack
-                        attackMiddle = false;
-                        yield break; // end the coroutine
-                    }
-
-                    // Move down
-                    position.y -= iPKSpeed * Time.fixedDeltaTime;
-                    
-                    transform.position = position;
-                }
-            }
-            else
-            {
-                // Break the loop if position.y is out of range
-                break;
-            }
-
-            yield return null; // wait for the next frame
-        } 
-    }*/
     
-    /*void AttackMiddle()
-        {
-            Debug.Log("Middle attack start!");
 
-        while (attackMiddle == true)
-            {
-                Vector3 position = transform.position;
+            /*  Tässä on koodi joka liikuttaa IPK-yläkalaa kerran vasemmalle + oikealle
 
-                position.y -= iPKSpeed * Time.fixedDeltaTime;
 
-                transform.position = position;
 
-                if(position.y <1.38)
+                IEnumerator AttackUpDown()
                 {
-                    position.y += iPKSpeed * Time.fixedDeltaTime;
+                    startIPKUpDownAttack = false;
+                    
+                    Debug.Log("Start AttackUpDown");
+
+                
+                    while (repeatUpDownAttack < 10)
+                    {
+
+                        while (iPKUp.transform.position != iPKUpMoveTillRight)
+                            {
+                                iPKUp.transform.position = Vector3.MoveTowards(iPKUp.transform.position, iPKUpMoveTillRight, iPKSpeed * Time.deltaTime);
+                                repeatUpDownAttack++;
+                                yield return null;
+                            }
+
+                        while (iPKUp.transform.position != iPKUpStartPosition)
+                            {
+                                iPKUp.transform.position = Vector3.MoveTowards(iPKUp.transform.position, iPKUpStartPosition, iPKSpeed * Time.deltaTime);
+                                repeatUpDownAttack++;
+                                yield return null;
+                            }
+
+                        if (repeatUpDownAttack >= 10)
+                        {
+                        yield break;
+                        }
+
+                    }
+                    
+            */
+
+                IEnumerator AttackUpDown()
+                {
+                    startIPKUpDownAttack = false;
+
+                    Debug.Log("iPKUp:in positio on = " + iPKUpStartPosition);
+                    
+                    Debug.Log("Start AttackUpDown");
+
+                    iPKUpStartPosition = new Vector3(Random.Range(iPKUpStartPosition.x - 0.10f, iPKUpStartPosition.x + 0), Random.Range(iPKUpStartPosition.y - 0, iPKUpStartPosition.y + 0),Random.Range(iPKUpStartPosition.z - 0f, iPKUpStartPosition.z +0 ));
+
+                    iPKUp.transform.position = iPKUpStartPosition;
+
+                    Debug.Log("iPKUp:in positio on = " + iPKUpStartPosition);
+
+                    while (iPKUp.transform.position.y > -8.15f)
+                    {
+                        Debug.Log("Start AttackUpDown");
+
+                        Vector3 position = iPKUp.transform.position;
+
+                        position.y -= iPKSpeed * Time.fixedDeltaTime;
 
                         transform.position = position;
-                        attackMiddle = false;
-                        break;
-                }
-        }
-     }*/
 
-    
-}
+                        yield return null;
+                    }
+
+                    if (repeatUpDownAttack >= 10)
+                        {
+                        yield break;
+                        }
+
+                }
+
+
+
+
+} 
+
+
+
+
+/*
+iPKDownStartPosition;
+
+
+
+    Vector3 VectoriPKUpMoveTillRight
+
+
+
+    iPKUpStartPosition
+    */

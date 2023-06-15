@@ -1059,6 +1059,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5167390584264444806, guid: 3f357533364dc4247a541b00dbcb2aa6, type: 3}
   m_PrefabInstance: {fileID: 541630095}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &542482254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 458251795946177014, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
+  m_PrefabInstance: {fileID: 1448060848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &595528861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2304,7 +2309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943461481528089420, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.67
+      value: 2.86
       objectReference: {fileID: 0}
     - target: {fileID: 943461481528089420, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2942,7 +2947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943461481528089420, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.93
+      value: -0.49
       objectReference: {fileID: 0}
     - target: {fileID: 943461481528089420, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3220,6 +3225,11 @@ Transform:
   m_Father: {fileID: 1428094774}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1656791234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 458251795946177014, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
+  m_PrefabInstance: {fileID: 1170873417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1699109625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3227,6 +3237,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4815925091232504468, guid: 1b1f7589def02454d91dba4cc3e3fe9a, type: 3}
+      propertyPath: iPKUp
+      value: 
+      objectReference: {fileID: 542482254}
+    - target: {fileID: 4815925091232504468, guid: 1b1f7589def02454d91dba4cc3e3fe9a, type: 3}
+      propertyPath: iPKDown
+      value: 
+      objectReference: {fileID: 1656791234}
     - target: {fileID: 8359890939188457147, guid: 1b1f7589def02454d91dba4cc3e3fe9a, type: 3}
       propertyPath: m_Name
       value: IPKMain
