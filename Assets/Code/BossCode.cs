@@ -10,6 +10,8 @@ public class BossCode : MonoBehaviour
 
     Vector3 moveTillUp;
 
+    Vector3 moveTillDown;
+
     float iPKSpeed = 5;
 
     bool spawnIPK = true;
@@ -60,8 +62,13 @@ public class BossCode : MonoBehaviour
     }
 
     IEnumerator AttackMiddle()
-    {
-        moveTillUp = new Vector3(29.33f,11.56f,-5.236f);
+    {    
+        while (repeatMiddleAttack <10)
+        {
+
+        repeatMiddleAttack++;
+
+        moveTillUp = new Vector3(24.2999992f,10.1800003f,-5.23600006f);
 
         Debug.Log("moveTillUp = " + moveTillUp);
 
@@ -70,12 +77,46 @@ public class BossCode : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, moveTillUp, iPKSpeed * Time.deltaTime);
         yield return null;
         }
-            if(transform.position == moveTillUp)
-        {
-        Debug.Log("Yield break!");
-        yield break;
-        }
+            
+            
+            
+        if(transform.position == moveTillUp)
         
+        moveTillDown = new Vector3(24.2999992f,1.71000004f,-5.23600006f);
+
+        Debug.Log("moveTillDown = " + moveTillDown);
+
+        while (transform.position != moveTillDown)
+        {
+        transform.position = Vector3.MoveTowards(transform.position, moveTillDown, iPKSpeed * Time.deltaTime);
+        yield return null;
+        }
+            if(transform.position == moveTillDown)
+        {
+        repeatMiddleAttack++;
+
+        Debug.Log("Repeat is : " + repeatMiddleAttack);
+
+
+        if (repeatMiddleAttack >=10)
+        {
+        
+        Debug.Log("Return to spawnposition");
+
+        while (transform.position != spawnPosition)
+        {
+        transform.position = Vector3.MoveTowards(transform.position, spawnPosition, iPKSpeed * Time.deltaTime);
+        yield return null;
+        }
+            if(transform.position == spawnPosition && repeatMiddleAttack >= 10)
+            {
+            Debug.Log("Yield break!");
+            yield break;
+            }
+        }
+        }
+        }
+
         /*Debug.Log("Start : moveTillUp = " + moveTillUp);
 
             if(transform.position == moveTillUp) 
