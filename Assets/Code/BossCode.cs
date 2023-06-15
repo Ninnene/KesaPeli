@@ -63,6 +63,9 @@ public class BossCode : MonoBehaviour
 
     IEnumerator AttackMiddle()
     {    
+
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
         while (repeatMiddleAttack <10)
         {
 
@@ -110,6 +113,8 @@ public class BossCode : MonoBehaviour
         }
             if(transform.position == spawnPosition && repeatMiddleAttack >= 10)
             {
+
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
             Debug.Log("Yield break!");
             yield break;
             }
