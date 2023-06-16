@@ -1334,6 +1334,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 458251795946177014, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
   m_PrefabInstance: {fileID: 1448060848}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &542482255
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542482254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0025758406, y: 0.015063611, z: 0.04051651}
+  m_Center: {x: -0.036580127, y: -0.0015995057, z: -0.0032192206}
 --- !u!1001 &595528861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2860,7 +2873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943461481528089420, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.86
+      value: 2.44
       objectReference: {fileID: 0}
     - target: {fileID: 943461481528089420, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4165,6 +4178,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 458251795946177014, guid: 285dccd4e02b9a44b9d96ab90c663055, type: 3}
   m_PrefabInstance: {fileID: 1170873417}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1656791235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656791234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0025758406, y: 0.015063611, z: 0.04051651}
+  m_Center: {x: -0.036580127, y: -0.0015995057, z: -0.0032192206}
 --- !u!1001 &1699109625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4184,6 +4210,10 @@ PrefabInstance:
       propertyPath: iPKDown
       value: 
       objectReference: {fileID: 1656791234}
+    - target: {fileID: 4815925091232504468, guid: 1b1f7589def02454d91dba4cc3e3fe9a, type: 3}
+      propertyPath: repeatMiddleAttack
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8359890939188457147, guid: 1b1f7589def02454d91dba4cc3e3fe9a, type: 3}
       propertyPath: m_Name
       value: IPKMain
@@ -4253,6 +4283,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3170481611415725727, guid: 1b1f7589def02454d91dba4cc3e3fe9a, type: 3}
   m_PrefabInstance: {fileID: 1699109625}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1699109627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8359890939188457147, guid: 1b1f7589def02454d91dba4cc3e3fe9a, type: 3}
+  m_PrefabInstance: {fileID: 1699109625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1699109628
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699109627}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &1714673790
 GameObject:
   m_ObjectHideFlags: 0

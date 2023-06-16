@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossCode : MonoBehaviour
 {
+    
+    public float hitpoints = 500;
+
 
 
     float timerRings = 0;
@@ -14,11 +17,11 @@ public class BossCode : MonoBehaviour
     // IPK ampumisvaihe
 
     Vector3 spawnPosition;
-    Vector3 attackPositionStart;
-
+    
     Vector3 moveTillUp;
 
     Vector3 moveTillDown;
+
 
     float iPKSpeed = 5;
 
@@ -27,8 +30,10 @@ public class BossCode : MonoBehaviour
     float middleAttackDone = 0;
 
     bool attackMiddle = false;
-    public float repeatMiddleAttack = 8;
+    public float repeatMiddleAttack = 0;
 
+
+    float cycleNumber = 0;
 
 
     // IPK ylös - alas - hyökkäysvaihe
@@ -51,17 +56,20 @@ public class BossCode : MonoBehaviour
     float repeatUpDownAttack = 0;
 
 
-    Vector3 iPKUpStartPosition;
+    Vector3 iPKUpStartPosition;     // Aloituspiste
 
-    Vector3 iPKDownStartPosition;
+    Vector3 iPKDownStartPosition;   // Aloituspiste
 
+    Vector3 iPKUpModdedPosition;    // Arvottu piste
+
+    Vector3 iPKDownModdedPosition;  // Arvottu piste
 
 
     Vector3 iPKUpMoveTillRight = new Vector3(-0.49000001f,21.1800003f,-14.04f);
 
     Vector3 iPKDownMoveTillLeft = new Vector3(18.5400009f,-11.5900002f,-14.04f);
 
-    
+    Vector3 attackPositionStart = new Vector3(24.3f,5.07f,-5.236f);
 
 
     bool attackUp = false;
@@ -75,9 +83,14 @@ public class BossCode : MonoBehaviour
 
         iPKUpStartPosition = iPKUp.transform.position;  // IPK ylhääällä aloituspaikka
 
-        iPKDownStartPosition = iPKDown.transform.position;  // IPK alhaalla aloituspaikka
+        iPKUpModdedPosition = iPKUp.transform.position;  // IPK ylhäällä arvontapaikka
 
-        bubbleStartPosition = bubbles.transform.position;
+        iPKDownStartPosition = iPKDown.transform.position;  //  IPK alhaalla aloituspaikka
+
+        iPKDownModdedPosition = iPKDown.transform.position; // IPK alhaalla arvontapaikka
+
+
+        bubbleStartPosition = bubbles.transform.position;   // Kuplien aloituspaikka
     }
 
     // Update is called once per frame
@@ -85,17 +98,17 @@ public class BossCode : MonoBehaviour
     {
         if(spawnIPK == true)
         {
-        attackPositionStart = new Vector3(24.3f,5.07f,-5.236f);
-
         transform.position = Vector3.MoveTowards(transform.position, attackPositionStart, iPKSpeed * Time.deltaTime);
         }
+
+        Debug.Log("In attack position");
 
 
     if (transform.position == attackPositionStart && !attackMiddle)
     {
     spawnIPK = false;
 
-    Debug.Log("In attack position");
+    Debug.Log("Starting middle attack");
 
     attackMiddle = true;
 
@@ -123,7 +136,20 @@ public class BossCode : MonoBehaviour
 
         Debug.Log("Start Attack from middle");
 
+        attackMiddle = false;
+
+        // Aktivoidaan aseet. (cycleNumber) ;
+
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+        if (cycleNumber >=2)
+        {
+            Debug.Log("Activate weapon 2");
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+
+
 
         while (repeatMiddleAttack <10)
         {
@@ -165,7 +191,16 @@ public class BossCode : MonoBehaviour
         
       //  Debug.Log("Return to spawnposition");
 
+
+            // Deaktivoidaan aseet :
+
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        gameObject.transform.GetChild(4).gameObject.SetActive(false);
+        gameObject.transform.GetChild(5).gameObject.SetActive(false);
+        gameObject.transform.GetChild(6).gameObject.SetActive(false);
 
         while (transform.position != spawnPosition)
         {
@@ -178,6 +213,10 @@ public class BossCode : MonoBehaviour
             ++middleAttackDone;
 
             startIPKUpDownAttack = true;
+
+            cycleNumber++;
+
+            Debug.Log("Cyclenumber = " + cycleNumber);
 
             //Debug.Log("Yield break!" + middleAttackDone);
             yield break;
@@ -228,7 +267,7 @@ public class BossCode : MonoBehaviour
                 {
                     Debug.Log("Start Attack from up");
                     
-                    
+                    repeatMiddleAttack = 0;
 
                     ++repeatUpDownAttack;
 
@@ -242,11 +281,11 @@ public class BossCode : MonoBehaviour
                     
                    // Debug.Log("Start AttackUpDown");
 
-                    iPKUpStartPosition = new Vector3(Random.Range(iPKUpStartPosition.x - 0.10f, iPKUpStartPosition.x + 14), Random.Range(iPKUpStartPosition.y - 0, iPKUpStartPosition.y + 0),Random.Range(iPKUpStartPosition.z - 0f, iPKUpStartPosition.z +0 ));
+                    iPKUpModdedPosition = new Vector3(Random.Range(iPKUpModdedPosition.x - 0.10f, iPKUpModdedPosition.x + 14), Random.Range(iPKUpModdedPosition.y - 0, iPKUpModdedPosition.y + 0),Random.Range(iPKUpModdedPosition.z - 0f, iPKUpModdedPosition.z +0 ));
 
-                    iPKUp.transform.position = iPKUpStartPosition;
+                    iPKUp.transform.position = iPKUpModdedPosition;
 
-                    bubbles.transform.position = iPKUpStartPosition;
+                    bubbles.transform.position = iPKUpModdedPosition;
                     
 
                  //   Debug.Log("iPKUp:in positio on = " + iPKUpStartPosition);
@@ -284,9 +323,16 @@ public class BossCode : MonoBehaviour
                         position.y -= iPKSpeed * Time.fixedDeltaTime;
 
                         iPKUp.transform.position = position;
+
+
+                        
                         
                         yield return null;
                     }
+
+                    iPKUp.transform.position = iPKUpStartPosition;
+
+                    iPKUpModdedPosition = iPKUpStartPosition;
 
                     startIPKDownUpAttack = true;
                 }
@@ -305,11 +351,11 @@ public class BossCode : MonoBehaviour
 
                         // Arvotaan alakalan ja kuplien positio:
 
-                        iPKDownStartPosition = new Vector3(Random.Range(iPKDownStartPosition.x  +14f, iPKDownStartPosition.x - 0.10f), Random.Range(iPKDownStartPosition.y - 0, iPKDownStartPosition.y + 0),Random.Range(iPKDownStartPosition.z - 0f, iPKDownStartPosition.z +0 ));
+                        iPKDownModdedPosition = new Vector3(Random.Range(iPKDownModdedPosition.x  +14f, iPKDownModdedPosition.x - 0.10f), Random.Range(iPKDownModdedPosition.y - 0, iPKDownModdedPosition.y + 0),Random.Range(iPKDownModdedPosition.z - 0f, iPKDownModdedPosition.z +0 ));
 
-                        iPKDown.transform.position = iPKDownStartPosition;
+                        iPKDown.transform.position = iPKDownModdedPosition;
 
-                        bubbles.transform.position = iPKDownStartPosition;
+                        bubbles.transform.position = iPKDownModdedPosition;
                         
                  //       Debug.Log("Bubbles from down" + bubbles.transform.position);
 
@@ -358,26 +404,57 @@ public class BossCode : MonoBehaviour
                             yield return null;
                         }
 
-                        // Jos alla olevat ehdot asetetaan rupeaa keskuskala ampumaan sekä ylä- ja alakala hyökkäämään loputtomasti :
-                        /*
-                        transform.position = attackPositionStart;
+                        // Jos kaikki alla olevat ehdot asetetaan rupeaa keskuskala ampumaan sekä ylä- ja alakala hyökkäämään loputtomasti :
+                        
+                        //transform.position = attackPositionStart;
+                        //attackMiddle = false;
+                        //startIPKUpDownAttack = false;
+
+                        //startIPKDownUpAttack = false; 
+                        //startIPKUpDownAttack = true;
+
+                        iPKDown.transform.position = iPKDownStartPosition;
+
+
+                        spawnIPK = true;
                         attackMiddle = false;
-                        startIPKUpDownAttack = false;
 
-                        startIPKDownUpAttack = false; 
-                        startIPKUpDownAttack = true;
+                        iPKDownModdedPosition = iPKDownStartPosition;
 
-                        */
 
                         if (repeatUpDownAttack > 10)
                             {
                             Debug.Log("STOP!");
-                            yield break;
+                            
                             }
 
-                       
-
                     }
+
+
+    
+        // Collisionit :
+
+        private void OnTriggerEnter(Collider collision)
+        {
+        Bullet bullet = collision.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            --hitpoints;
+
+            if (!bullet.isEnemy)
+            {
+                
+
+                if (hitpoints <= 0)
+                {
+                Destroy(gameObject);
+                Destroy(bullet.gameObject);
+            }
+            }
+            
+        }
+        }
+        
 
 
 

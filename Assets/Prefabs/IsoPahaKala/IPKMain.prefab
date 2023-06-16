@@ -819,6 +819,8 @@ GameObject:
   - component: {fileID: 5251276046412217252}
   - component: {fileID: 7999713400302735214}
   - component: {fileID: 4815925091232504468}
+  - component: {fileID: 4280937685780272972}
+  - component: {fileID: 5989184825226724669}
   m_Layer: 0
   m_Name: IPKMain
   m_TagString: Untagged
@@ -911,7 +913,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa435b6925e67e48b90e63438f2393a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitpoints: 500
   repeatMiddleAttack: 8
   iPKUp: {fileID: 0}
   iPKDown: {fileID: 0}
   bubbles: {fileID: 0}
+--- !u!114 &4280937685780272972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359890939188457147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4449f31dc4201c34fbc650b3fb8e2ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 100000
+--- !u!65 &5989184825226724669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359890939188457147}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.002575841, y: 0.015063611, z: 0.04036608}
+  m_Center: {x: -0.036580134, y: -0.0015995057, z: -0.003144002}
