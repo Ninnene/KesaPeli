@@ -7,7 +7,7 @@ public class BossCode : MonoBehaviour
     
     public float hitpoints = 500;
 
-
+    bool canBeDestoyed = false;
 
     float timerRings = 0;
     float timer = 0;
@@ -79,6 +79,10 @@ public class BossCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        LevelController.instance.AddDestructable(); 
+
+
         spawnPosition = transform.position;  // IPK ampumisvaiheen aloituspaikka
 
         iPKUpStartPosition = iPKUp.transform.position;  // IPK ylhääällä aloituspaikka
@@ -91,24 +95,48 @@ public class BossCode : MonoBehaviour
 
 
         bubbleStartPosition = bubbles.transform.position;   // Kuplien aloituspaikka
+
+        // Debug.Log("Transforms at start =" + transform.position);
+
     }
 
-    // Update is called once per frame
+
+    
     void Update()
     {
+        
+
         if(spawnIPK == true)
         {
         transform.position = Vector3.MoveTowards(transform.position, attackPositionStart, iPKSpeed * Time.deltaTime);
         }
 
-        Debug.Log("In attack position");
+       // Debug.Log("In attack position");
+
+
+
+        // Estetään pomon vahingoittaminen jos se ei ole hyökkäysasennossa :
+
+        if(transform.position == attackPositionStart)
+        {
+            canBeDestoyed = true;
+
+            Debug.Log(" (Boss) Can be destroyed = " + canBeDestoyed);
+           // Debug.Log("position = " + transform.position);
+
+            Gun[] guns = transform.GetComponentsInChildren<Gun>();
+            foreach (Gun gun in guns)
+            {
+                gun.isActive = true;  //tämä viittaa isActive booliin Gun-koodissa
+            }
+        }
 
 
     if (transform.position == attackPositionStart && !attackMiddle)
     {
     spawnIPK = false;
 
-    Debug.Log("Starting middle attack");
+ //   Debug.Log("Starting middle attack");
 
     attackMiddle = true;
 
@@ -129,12 +157,45 @@ public class BossCode : MonoBehaviour
 
     }
 
+
+     // Collisionit :
+
+        private void OnTriggerEnter(Collider collision)
+    {
     
+        Debug.Log("Collision detected in original Destructable!");
+
+        if(!canBeDestoyed)
+        {
+            return;
+        }
+
+
+        Bullet bullet = collision.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            if (!bullet.isEnemy)
+            {
+                --hitpoints;
+                Destroy(bullet.gameObject);
+            }
+            if (hitpoints <= 0)
+            {
+            LevelController.instance.RemoveDestructable();
+            Destroy(gameObject);
+            Destroy(bullet.gameObject);
+            }
+            
+        }
+    }
+
+
+
 
     IEnumerator AttackMiddle()
     {    
 
-        Debug.Log("Start Attack from middle");
+        Debug.Log("Start Attack from middle, position is =" + transform.position);
 
         attackMiddle = false;
 
@@ -147,7 +208,11 @@ public class BossCode : MonoBehaviour
             Debug.Log("Activate weapon 2");
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
-
+        if (cycleNumber >=4)
+        {
+            Debug.Log("Activate weapon 3");
+            gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        }
 
 
 
@@ -265,6 +330,8 @@ public class BossCode : MonoBehaviour
 
                 IEnumerator AttackUpDown()
                 {
+                    canBeDestoyed = false;
+
                     Debug.Log("Start Attack from up");
                     
                     repeatMiddleAttack = 0;
@@ -277,7 +344,7 @@ public class BossCode : MonoBehaviour
                    
                    // Arvotaan yläkalan ja kuplien positio :
                    
-                   // Debug.Log("iPKUp:in positio on = " + iPKUpStartPosition);
+                   // Debug.Log("iPKUp:in positio on = " + iPKUpModdedPosition);
                     
                    // Debug.Log("Start AttackUpDown");
 
@@ -288,7 +355,7 @@ public class BossCode : MonoBehaviour
                     bubbles.transform.position = iPKUpModdedPosition;
                     
 
-                 //   Debug.Log("iPKUp:in positio on = " + iPKUpStartPosition);
+                 //   Debug.Log("iPKUp:in positio on = " + iPKUpModdedPosition);
 
 
                     // Tuotetaan varoituskuplat :
@@ -324,11 +391,10 @@ public class BossCode : MonoBehaviour
 
                         iPKUp.transform.position = position;
 
-
-                        
-                        
                         yield return null;
                     }
+
+                    // Valmistellaan seuraava vaihe :
 
                     iPKUp.transform.position = iPKUpStartPosition;
 
@@ -340,6 +406,8 @@ public class BossCode : MonoBehaviour
                     
                     IEnumerator AttackDownUp()
                     {
+
+                        canBeDestoyed = false;
                     
                         Debug.Log("Start attack from down");
 
@@ -383,7 +451,7 @@ public class BossCode : MonoBehaviour
 
                         bubbles.transform.position = bubbleStartPosition;
 
-                     // Laitetaan alakala hyökkäämään kun kuplat ovat alhaalla :
+                     // Laitetaan alakala hyökkäämään kun kuplat ovat ylhäällä :
 
 
                         while (iPKDown.transform.position.y < 17.91f && bubbles.transform.position == bubbleStartPosition)
@@ -413,6 +481,9 @@ public class BossCode : MonoBehaviour
                         //startIPKDownUpAttack = false; 
                         //startIPKUpDownAttack = true;
 
+
+                        // Asetetaan ehdot jotta vaihe voi alkaa alusta :
+
                         iPKDown.transform.position = iPKDownStartPosition;
 
 
@@ -432,28 +503,7 @@ public class BossCode : MonoBehaviour
 
 
     
-        // Collisionit :
-
-        private void OnTriggerEnter(Collider collision)
-        {
-        Bullet bullet = collision.GetComponent<Bullet>();
-        if (bullet != null)
-        {
-            --hitpoints;
-
-            if (!bullet.isEnemy)
-            {
-                
-
-                if (hitpoints <= 0)
-                {
-                Destroy(gameObject);
-                Destroy(bullet.gameObject);
-            }
-            }
-            
-        }
-        }
+       
         
 
 

@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        initialPosition = transform.position;
+        initialPosition = transform.position;   //Pelaaja palaa tähän kuollessaan.
 
        // renderer = transform.Find("Renderer").GetComponent<Renderer>();
     }
@@ -327,6 +327,20 @@ if (pos.y <= 1.159951f )
         // Collisions :
     private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("Player collision triggered.");
+
+
+        // Loppupomotaisteluun liittyvää koodia.
+
+        if (collision.name == "IPKUp")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.name == "IPKDown")
+        {
+            Destroy(gameObject);
+        }
+        // /
 
         Bullet bullet = collision.GetComponent<Bullet>();
         if (bullet != null)

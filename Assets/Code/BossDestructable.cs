@@ -22,6 +22,11 @@ public class BossDestructable : MonoBehaviour
         if(transform.position.x == 24.3f && !canBeDestoyed)
         {
             canBeDestoyed = true;
+            Gun[] guns = transform.GetComponentsInChildren<Gun>();
+            foreach (Gun gun in guns)
+            {
+                gun.isActive = true;  //tämä viittaa isActive booliin Gun-koodissa
+            }
         }
     }
 

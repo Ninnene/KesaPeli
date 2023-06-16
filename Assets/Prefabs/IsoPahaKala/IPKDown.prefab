@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 943461481528089420}
   - component: {fileID: 4231134793170015465}
   - component: {fileID: 2115836287471656995}
+  - component: {fileID: 743026755518810876}
   m_Layer: 0
   m_Name: IPKDown
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 458251795946177014}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 22.35, y: -16.25, z: -14.04}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 450, y: 450, z: 450}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &743026755518810876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458251795946177014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0025758406, y: 0.015063611, z: 0.04051651}
+  m_Center: {x: -0.036580127, y: -0.0015995057, z: -0.0032192206}

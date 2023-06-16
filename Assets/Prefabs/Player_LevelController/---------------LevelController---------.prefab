@@ -664,6 +664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
+--- !u!23 &499590468957721239 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
+  m_PrefabInstance: {fileID: 1238335156864405011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1631932811377814008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
@@ -721,4 +726,4 @@ MonoBehaviour:
   turnSpeed: 60
   resetTime: 0.2
   maxRotation: 45
-  Renderer: {fileID: 0}
+  Renderer: {fileID: 499590468957721239}
