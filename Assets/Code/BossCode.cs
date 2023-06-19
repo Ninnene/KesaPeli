@@ -9,21 +9,21 @@ public class BossCode : MonoBehaviour
 
     bool canBeDestoyed = false;
 
-    float timerRings = 0;
-    float timer = 0;
+    public Renderer Renderer;
 
-
+    public Mesh normalIPK;
 
     // IPK ampumisvaihe
 
     Vector3 spawnPosition;
     
-    Vector3 moveTillUp;
+    Vector3 moveTillDown = new Vector3(24.2999992f,1.71000004f,-5.23600006f);
 
-    Vector3 moveTillDown;
-
+    Vector3 moveTillUp = new Vector3(24.2999992f,11.2800003f,-5.23600006f);
 
     float iPKSpeed = 5;
+
+    float iPKDeathSpeed = 2;
 
     bool spawnIPK = true;
 
@@ -60,9 +60,9 @@ public class BossCode : MonoBehaviour
 
     Vector3 iPKDownStartPosition;   // Aloituspiste
 
-    Vector3 iPKUpModdedPosition;    // Arvottu piste
+    Vector3 iPKUpModdedPosition;    // Arvottu piste    (RandomRange)
 
-    Vector3 iPKDownModdedPosition;  // Arvottu piste
+    Vector3 iPKDownModdedPosition;  // Arvottu piste    (RandomRange)
 
 
     Vector3 iPKUpMoveTillRight = new Vector3(-0.49000001f,21.1800003f,-14.04f);
@@ -71,17 +71,12 @@ public class BossCode : MonoBehaviour
 
     Vector3 attackPositionStart = new Vector3(24.3f,5.07f,-5.236f);
 
-
-    bool attackUp = false;
-    bool attackDown = false;
+    Vector3 deathPosition = new Vector3(20.2900009f,-4.4000001f,-5.23600006f);
 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-
-        LevelController.instance.AddDestructable(); 
-
 
         spawnPosition = transform.position;  // IPK ampumisvaiheen aloituspaikka
 
@@ -96,7 +91,6 @@ public class BossCode : MonoBehaviour
 
         bubbleStartPosition = bubbles.transform.position;   // Kuplien aloituspaikka
 
-        // Debug.Log("Transforms at start =" + transform.position);
 
     }
 
@@ -105,6 +99,38 @@ public class BossCode : MonoBehaviour
     void Update()
     {
         
+
+        if (hitpoints <= 0)
+            {
+                Debug.Log("Blargh. I'm ded.");
+                
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+
+
+                Renderer.enabled =! Renderer.enabled;
+
+                gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                gameObject.transform.GetChild(5).gameObject.SetActive(false);
+                gameObject.transform.GetChild(6).gameObject.SetActive(false);
+                gameObject.transform.GetChild(6).gameObject.SetActive(false);
+                gameObject.transform.GetChild(7).gameObject.SetActive(false);
+        
+                
+
+                transform.position = Vector3.MoveTowards(transform.position, deathPosition, iPKDeathSpeed * Time.deltaTime);
+                transform.rotation *= Quaternion.AngleAxis(iPKSpeed * 10 * Time.deltaTime, Vector3.left);
+
+                if(transform.position == deathPosition)
+                {
+                    Destroy(gameObject);
+                }
+                
+            }
+
 
         if(spawnIPK == true)
         {
@@ -122,21 +148,15 @@ public class BossCode : MonoBehaviour
             canBeDestoyed = true;
 
             Debug.Log(" (Boss) Can be destroyed = " + canBeDestoyed);
-           // Debug.Log("position = " + transform.position);
-
-            Gun[] guns = transform.GetComponentsInChildren<Gun>();
-            foreach (Gun gun in guns)
-            {
-                gun.isActive = true;  //tämä viittaa isActive booliin Gun-koodissa
-            }
+           
         }
 
 
-    if (transform.position == attackPositionStart && !attackMiddle)
+    if (transform.position == attackPositionStart && canBeDestoyed && hitpoints >0)
     {
     spawnIPK = false;
 
- //   Debug.Log("Starting middle attack");
+    Debug.Log("Fetch middle attack");
 
     attackMiddle = true;
 
@@ -145,13 +165,15 @@ public class BossCode : MonoBehaviour
 
 
     
-    if (startIPKUpDownAttack == true)
+    if (startIPKUpDownAttack == true && hitpoints >0)
     {
+    Debug.Log("Fetch up attack");
     StartCoroutine(AttackUpDown()); // start the second coroutine
     }
 
-    if (startIPKDownUpAttack == true && startIPKUpDownAttack == false )
+    if (startIPKDownUpAttack == true && startIPKUpDownAttack == false && hitpoints >0)
     {
+    Debug.Log("Fetch down attack");
     StartCoroutine(AttackDownUp());
     }
 
@@ -162,9 +184,6 @@ public class BossCode : MonoBehaviour
 
         private void OnTriggerEnter(Collider collision)
     {
-    
-        Debug.Log("Collision detected in original Destructable!");
-
         if(!canBeDestoyed)
         {
             return;
@@ -179,13 +198,8 @@ public class BossCode : MonoBehaviour
                 --hitpoints;
                 Destroy(bullet.gameObject);
             }
-            if (hitpoints <= 0)
-            {
-            LevelController.instance.RemoveDestructable();
-            Destroy(gameObject);
-            Destroy(bullet.gameObject);
-            }
             
+                
         }
     }
 
@@ -194,8 +208,8 @@ public class BossCode : MonoBehaviour
 
     IEnumerator AttackMiddle()
     {    
-
-        Debug.Log("Start Attack from middle, position is =" + transform.position);
+       
+        Debug.Log("Start Attack from middle");
 
         attackMiddle = false;
 
@@ -203,7 +217,7 @@ public class BossCode : MonoBehaviour
 
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
-        if (cycleNumber >=2)
+        if (cycleNumber >=1)
         {
             Debug.Log("Activate weapon 2");
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
@@ -214,18 +228,20 @@ public class BossCode : MonoBehaviour
             gameObject.transform.GetChild(2).gameObject.SetActive(true);
         }
 
-
-
-        while (repeatMiddleAttack <10)
+        if (cycleNumber >=6)
         {
+            Debug.Log("Activate weapon 4");
+            gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        }
 
-        repeatMiddleAttack++;
 
-        moveTillUp = new Vector3(24.2999992f,10.1800003f,-5.23600006f);
+
+        while ( hitpoints >0)
+        {
 
        // Debug.Log("moveTillUp = " + moveTillUp);
 
-        while (transform.position != moveTillUp)
+        while (transform.position != moveTillUp && hitpoints >0)
         {
         transform.position = Vector3.MoveTowards(transform.position, moveTillUp, iPKSpeed * Time.deltaTime);
         yield return null;
@@ -233,13 +249,13 @@ public class BossCode : MonoBehaviour
             
             
             
-        if(transform.position == moveTillUp)
+        if(transform.position == moveTillUp && hitpoints >0)
         
-        moveTillDown = new Vector3(24.2999992f,1.71000004f,-5.23600006f);
+       
 
       //  Debug.Log("moveTillDown = " + moveTillDown);
 
-        while (transform.position != moveTillDown)
+        while (transform.position != moveTillDown && hitpoints >0)
         {
         transform.position = Vector3.MoveTowards(transform.position, moveTillDown, iPKSpeed * Time.deltaTime);
         yield return null;
@@ -251,12 +267,12 @@ public class BossCode : MonoBehaviour
        // Debug.Log("Repeat is : " + repeatMiddleAttack);
 
 
-        if (repeatMiddleAttack >=10)
+        if (repeatMiddleAttack >=4)
         {
         
-      //  Debug.Log("Return to spawnposition");
+        Debug.Log("Return to spawnposition");
 
-
+        Debug.Log("Start deactivate weapons");
             // Deaktivoidaan aseet :
 
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
@@ -267,21 +283,26 @@ public class BossCode : MonoBehaviour
         gameObject.transform.GetChild(5).gameObject.SetActive(false);
         gameObject.transform.GetChild(6).gameObject.SetActive(false);
 
-        while (transform.position != spawnPosition)
+        Debug.Log("Weapons deactivated");
+
+        while (transform.position != spawnPosition && hitpoints >0)
         {
         transform.position = Vector3.MoveTowards(transform.position, spawnPosition, iPKSpeed * Time.deltaTime);
+        gameObject.GetComponent<MeshFilter>().mesh = normalIPK;
         yield return null;
+
+        
         }
         
-            if(transform.position == spawnPosition && repeatMiddleAttack >= 10)
+            if(transform.position == spawnPosition && repeatMiddleAttack >= 4 && hitpoints >0)
             {
             ++middleAttackDone;
-
-            startIPKUpDownAttack = true;
 
             cycleNumber++;
 
             Debug.Log("Cyclenumber = " + cycleNumber);
+
+            startIPKUpDownAttack = true;
 
             //Debug.Log("Yield break!" + middleAttackDone);
             yield break;
@@ -330,6 +351,8 @@ public class BossCode : MonoBehaviour
 
                 IEnumerator AttackUpDown()
                 {
+                    Debug.Log("AttackUpDown()");
+
                     canBeDestoyed = false;
 
                     Debug.Log("Start Attack from up");
@@ -405,11 +428,11 @@ public class BossCode : MonoBehaviour
 
                     
                     IEnumerator AttackDownUp()
-                    {
+                    {   
+
+                        Debug.Log("AttackDownUp()");
 
                         canBeDestoyed = false;
-                    
-                        Debug.Log("Start attack from down");
 
 
                      ++repeatUpDownAttack;
@@ -458,7 +481,7 @@ public class BossCode : MonoBehaviour
 
                         {
 
-                            Debug.Log("Start AttackDownUp");
+                            //Debug.Log("Start AttackDownUp");
  
 
                             Vector3 position = iPKDown.transform.position;
@@ -491,13 +514,7 @@ public class BossCode : MonoBehaviour
                         attackMiddle = false;
 
                         iPKDownModdedPosition = iPKDownStartPosition;
-
-
-                        if (repeatUpDownAttack > 10)
-                            {
-                            Debug.Log("STOP!");
-                            
-                            }
+                        
 
                     }
 

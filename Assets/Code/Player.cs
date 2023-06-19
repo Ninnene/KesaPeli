@@ -340,6 +340,16 @@ if (pos.y <= 1.159951f )
         {
             Destroy(gameObject);
         }
+        if (collision.name == "IPKMain")
+        {
+            Destroy(gameObject);
+        }
+
+
+            
+
+
+
         // /
 
         Bullet bullet = collision.GetComponent<Bullet>();

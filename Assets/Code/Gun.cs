@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour
 
         if (autoShoot)
        {
-
+            //IPK.gameObject.GetComponent<MeshFilter>().mesh = normalMesh;
             
             if (delayTimer >= shootIntervalSeconds)
             {

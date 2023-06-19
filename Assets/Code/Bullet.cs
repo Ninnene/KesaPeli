@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 3.5f);
         DontDestroyOnLoad(gameObject);  //Metodi estää(gameObjectia) tuhoutumasta kun uusi scene ladataan. 
     }
 
