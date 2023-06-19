@@ -42,6 +42,7 @@ public class PauseMenuSCRIPT : MonoBehaviour
     public void OptionsMenu()
     {
         Time.timeScale = 1f;
+        Resume();
         SceneManager.LoadScene(0);
         //Debug.Log("OptionsMenu");
     }
