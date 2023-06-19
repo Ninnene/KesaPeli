@@ -301,6 +301,8 @@ if (pos.y <= 1.159951f )
         if (HasShield())
         {
             DeactivateShield();
+            invincible = true;
+            return;
         }
         else
         {
