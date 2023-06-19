@@ -676,6 +676,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e5acb6dbd530b934e89aa42ac8291faa, type: 3}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: Normal damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e5acb6dbd530b934e89aa42ac8291faa, type: 3}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: Enemy damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a5f0e9672691b284d9b907ed4d5c9e20, type: 3}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650576607, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1997190981881594422, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_Enabled
       value: 0

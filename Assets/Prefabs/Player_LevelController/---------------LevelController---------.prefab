@@ -561,7 +561,7 @@ RectTransform:
   - {fileID: 232663395}
   - {fileID: 1208485501}
   m_Father: {fileID: 2717824954030811932}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1390,7 +1390,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2717824954030811932}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1456778759
 MonoBehaviour:
@@ -1436,7 +1436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1650576608}
-  - component: {fileID: 1650576607}
+  - component: {fileID: 5020678559723069626}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1457,9 +1457,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2717824954030811932}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1650576607
+--- !u!114 &5020678559723069626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1468,12 +1468,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1650576606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71dda3b787be7f1419b7f18098ebcb07, type: 3}
+  m_Script: {fileID: 11500000, guid: 44d6dfec04a3d90449175c83d44898df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 0}
   sounds:
-  - name: Taking damage
-    clip: {fileID: 8300000, guid: bea7679097d72b54c880e64d268ce111, type: 3}
+  - name: Shoot!
+    clip: {fileID: 8300000, guid: a5f0e9672691b284d9b907ed4d5c9e20, type: 3}
     volume: 1
     pitch: 0
     loop: 0
@@ -1987,10 +1988,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1650576608}
   - {fileID: 970323615}
   - {fileID: 1631932811377814008}
   - {fileID: 1456778760}
-  - {fileID: 1650576608}
   - {fileID: 1061901697}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2227,7 +2228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
       propertyPath: m_LocalScale.x

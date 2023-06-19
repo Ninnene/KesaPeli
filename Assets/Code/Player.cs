@@ -99,6 +99,8 @@ public class Player : MonoBehaviour
             {
                 if(gun.gameObject.activeSelf)
                 {
+                //Debug.Log("Shoot");
+                FindObjectOfType<AudioManagerScript>().Play("Shoot!");
                 gun.Shoot();
                 }
             }
