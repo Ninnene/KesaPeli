@@ -160,15 +160,13 @@ public class BossCode : MonoBehaviour
 
     attackMiddle = true;
 
-    StartCoroutine(AttackMiddle()); // start the coroutine
+    StartCoroutine(AttackMiddle());
     }
 
-
-    
     if (startIPKUpDownAttack == true && hitpoints >0)
     {
     Debug.Log("Fetch up attack");
-    StartCoroutine(AttackUpDown()); // start the second coroutine
+    StartCoroutine(AttackUpDown()); 
     }
 
     if (startIPKDownUpAttack == true && startIPKUpDownAttack == false && hitpoints >0)
