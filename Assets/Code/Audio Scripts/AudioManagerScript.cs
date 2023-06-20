@@ -40,7 +40,7 @@ public class AudioManagerScript : MonoBehaviour
 
     void Start()
     {
-        Play("Theme");
+        //Play("Theme");
       
     }
 
