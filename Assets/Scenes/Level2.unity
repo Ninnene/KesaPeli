@@ -1253,6 +1253,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5167390584264444806, guid: 3f357533364dc4247a541b00dbcb2aa6, type: 3}
   m_PrefabInstance: {fileID: 493806043}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &501797491 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3797910343187934304, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+  m_PrefabInstance: {fileID: 646153158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &519016582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1973,6 +1978,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4946532343493054796, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: _musicSource
+      value: 
+      objectReference: {fileID: 501797491}
+    - target: {fileID: 4946532343493054796, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: _effectSource
+      value: 
+      objectReference: {fileID: 1707080758}
     - target: {fileID: 5966301025869019075, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_Name
       value: ---------------LevelController---------
@@ -3076,6 +3089,10 @@ PrefabInstance:
     - target: {fileID: 5933276533403373205, guid: a9b8bfcf00ea41f44ab5aa19a248f0e3, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121489807393542345, guid: a9b8bfcf00ea41f44ab5aa19a248f0e3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b8bfcf00ea41f44ab5aa19a248f0e3, type: 3}
@@ -4288,6 +4305,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5167390584264444806, guid: 3f357533364dc4247a541b00dbcb2aa6, type: 3}
   m_PrefabInstance: {fileID: 1681598923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1707080758 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5982504750964192620, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+  m_PrefabInstance: {fileID: 646153158}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1707435711
 PrefabInstance:
