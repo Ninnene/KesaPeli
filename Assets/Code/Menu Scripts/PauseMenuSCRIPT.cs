@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenuSCRIPT : MonoBehaviour
 {
 
     private Player playerScript;
+    private UnityEngine.UI.Text  canvasPoints;
 
     public static bool GameIsPaused = false;
 
@@ -66,12 +68,15 @@ public class PauseMenuSCRIPT : MonoBehaviour
     public void ResetAbilities()
     {
         playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
+        canvasPoints = GameObject.Find("ScoreNumber").GetComponent<UnityEngine.UI.Text>();
 
         playerScript.hits = 3;
         playerScript.powerUpGunLevel = 0;
         playerScript.speedMultiplier = 1;
 
-                playerScript.transform.GetChild(1).gameObject.SetActive(false);
+        canvasPoints = null;
+
+                playerScript.gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 playerScript.gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 playerScript.gameObject.transform.GetChild(3).gameObject.SetActive(false);
                 playerScript.gameObject.transform.GetChild(4).gameObject.SetActive(false);
