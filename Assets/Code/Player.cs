@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     Vector2 initialPosition;
 
+    
+
     //Array of guns :p
     Gun[] guns;
 
@@ -26,7 +28,7 @@ public class Player : MonoBehaviour
     public float turnSpeed = 20;
 
 // Tätä speed-arvoa tarvitaan kun resetoidaan speed-bonuksia
-    float speedMultiplier = 1;
+    public float speedMultiplier = 1;
 
 // Kääntymisen nollaus
     private float timer = 0f;
@@ -55,7 +57,7 @@ public class Player : MonoBehaviour
 
     //Kilpi
     GameObject shield;
-    int powerUpGunLevel = 0;
+    public int powerUpGunLevel = 0;
    
 
 
@@ -254,7 +256,7 @@ if (pos.y <= 1.159951f )
     {
         shield.SetActive(true);
     }
-    void DeactivateShield()
+    public void DeactivateShield()
     {
         shield.SetActive(false);
     }

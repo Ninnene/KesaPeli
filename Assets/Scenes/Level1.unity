@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18443925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 228875775, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+  m_PrefabInstance: {fileID: 464450941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &18443926 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1997190981881594422, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+  m_PrefabInstance: {fileID: 464450941}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18443925}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495888aa64de84a40af9ec452155f23c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &51296176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -704,6 +720,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 18443926}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 18443926}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetAbilities
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OptionsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PauseMenuSCRIPT, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372021989, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1650576606, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -848,10 +900,22 @@ PrefabInstance:
       propertyPath: sounds.Array.data[1].volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5243711353425019445, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 1811181043}
     - target: {fileID: 5966301025869019075, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_Name
       value: ---------------LevelController---------
       objectReference: {fileID: 0}
+    - target: {fileID: 8182170448265373483, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182170448265373483, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: pausemenuUI
+      value: 
+      objectReference: {fileID: 18443925}
     m_RemovedComponents:
     - {fileID: 1215841186, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
     - {fileID: 1682439710, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
@@ -2382,7 +2446,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: bc83516ffdbd5f74fbeeb23a6300fb44, type: 2}
   m_audioClip: {fileID: 8300000, guid: 946715c2a6f87e942bed4fd2ea44cc42, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.494
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2630,6 +2694,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1811181043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1238335156541637779, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+  m_PrefabInstance: {fileID: 464450941}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd25c1394114ae46a6010fc3cd87c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1932835540
 GameObject:
   m_ObjectHideFlags: 0

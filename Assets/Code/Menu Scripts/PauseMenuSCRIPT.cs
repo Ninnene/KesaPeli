@@ -5,9 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuSCRIPT : MonoBehaviour
 {
+
+    private Player playerScript;
+
     public static bool GameIsPaused = false;
 
     public GameObject pausemenuUI;
+
+
+    void Start()
+    {
+    
+    }
 
     // Update is called once per frame
     void Update()
@@ -52,5 +61,26 @@ public class PauseMenuSCRIPT : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void ResetAbilities()
+    {
+        playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
+
+        playerScript.hits = 3;
+        playerScript.powerUpGunLevel = 0;
+        playerScript.speedMultiplier = 1;
+
+                playerScript.transform.GetChild(1).gameObject.SetActive(false);
+                playerScript.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                playerScript.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                playerScript.gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                playerScript.gameObject.transform.GetChild(5).gameObject.SetActive(false);
+
+                playerScript.DeactivateShield();
+
+        //Debug.Log("Players hits  = " + playerScript.hits);
+        //Debug.Log("Players Gunlevel  = " + playerScript.powerUpGunLevel);
+        //Debug.Log("Players speed  = " + playerScript.speedMultiplier);
     }
 }
