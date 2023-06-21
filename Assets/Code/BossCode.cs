@@ -192,7 +192,8 @@ public class BossCode : MonoBehaviour
         if (bullet != null)
         {
             if (!bullet.isEnemy)
-            {
+            {FindObjectOfType<AudioManagerScript>().Play("enemy damage"); // tämä aktivoi vihun damage äänen
+
                 --hitpoints;
                 Destroy(bullet.gameObject);
             }

@@ -105,7 +105,6 @@ public class Player : MonoBehaviour
                 
                 gun.Shoot();
                 }
-                FindObjectOfType<AudioManagerScript>().Play("shoot!");
             }
             
         }
@@ -255,16 +254,19 @@ if (pos.y <= 1.159951f )
     void ActivateShield()
     {
         shield.SetActive(true);
+        FindObjectOfType<AudioManagerScript>().Play("shield"); // Ajattelin laittaa tänne shieldin oman äänen mutta toistaiseksi tämä on vain testi käytössä
+        //Debug.Log("shield");
     }
     public void DeactivateShield()
     {
+       
         shield.SetActive(false);
     }
     bool HasShield ()
     {
         return shield.activeSelf;
     }
-        // Kilpi /
+        // Kilpi 
 
 
     //AsePowerUp;
@@ -295,6 +297,7 @@ if (pos.y <= 1.159951f )
     {
         transform.position = initialPosition;
         DeactivateShield();
+        FindObjectOfType<AudioManagerScript>().Play("shield");// shieldi särkyy ääni
         powerUpGunLevel = -1;
         AddGuns();
         SetSpeedMultiplier(1);
@@ -321,6 +324,7 @@ if (pos.y <= 1.159951f )
 
                 if(hits == 0)
                 {
+                    FindObjectOfType<AudioManagerScript>().Play("dod"); //pelaaja kuoli/respawnas ääni
                     ResetShip();
                 }
                 else
@@ -366,6 +370,7 @@ if (pos.y <= 1.159951f )
             if (bullet.isEnemy)
             {
             Hit(bullet.gameObject);
+            FindObjectOfType<AudioManagerScript>().Play("normal damage");// tämä aktivoi peaajan gamagen saamis äänen 
             }
         }
 

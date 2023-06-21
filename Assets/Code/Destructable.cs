@@ -52,7 +52,7 @@ public class Destructable : MonoBehaviour
         {
             if (!bullet.isEnemy)
             {
-
+                FindObjectOfType<AudioManagerScript>().Play("enemy damage"); // tämä aktivoi damage äänen
             LevelController.instance.AddScore(scoreValue); 
             LevelController.instance.RemoveDestructable();
             Destroy(gameObject);

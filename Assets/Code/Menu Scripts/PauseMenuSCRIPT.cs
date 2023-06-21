@@ -23,7 +23,7 @@ public class PauseMenuSCRIPT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FindObjectOfType<AudioManagerScript>().Play("Nappi");
+        //FindObjectOfType<AudioManagerScript>().Play("Nappi");
         if (Input.GetKeyDown(KeyCode.Escape)) //eli kun esc näppäintä painetaan tapahtuu...
         {
             if (GameIsPaused) // onko peli pausetettu? jos oli...

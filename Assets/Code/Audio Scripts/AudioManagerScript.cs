@@ -5,6 +5,7 @@ using UnityEngine;
 //Credit to Brackeys youtube tutorial on Audio managers, as the majority of this code and learning how to use it was made by him.
 // Alla se skripti joka pitää liittää sinne paikkaan koodia mistä ääntä haluaa kuulla
 //FindObjectOfType<AudioManagerScript>().Play("Shoot!");
+//FindObjectOfType<AudioManagerScript>().Stop("Shoot!"); luultavasti lopettaa musiikin/äänen.
 
 public class AudioManagerScript : MonoBehaviour
 {

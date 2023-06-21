@@ -125,6 +125,7 @@ public class IsoPahaKala : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
+            FindObjectOfType<AudioManagerScript>().Play("dod"); //pelaaja kuolee ääni
             LevelController.instance.ResetLevel();
         }
     }

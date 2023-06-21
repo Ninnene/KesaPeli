@@ -51,6 +51,7 @@ public class Gun : MonoBehaviour
                 if(shootTimer >= shootIntervalSeconds)
                 {
                     Shoot();
+                    FindObjectOfType<AudioManagerScript>().Play("vihu ampuu");// vihu ampuu ääni
                     shootTimer = 0;
                 }
                 else
