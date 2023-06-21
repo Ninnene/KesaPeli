@@ -69,6 +69,7 @@ public class BossGun : MonoBehaviour
             {
                 if(shootTimer >= shootIntervalSeconds)
                 {
+                    FindObjectOfType<AudioManagerScript>().Play("vihu ampuu"); // bossi ampuu ääni tästä
                     Shoot();
                     shootTimer = 0;
                 }

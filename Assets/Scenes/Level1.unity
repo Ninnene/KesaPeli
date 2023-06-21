@@ -856,82 +856,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 39d5b706bcc98534a949a0dd462ba2e8, type: 3}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[0].name
-      value: shield
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e5acb6dbd530b934e89aa42ac8291faa, type: 3}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[1].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4c5d57bea3a6aa1439bf0ba9387af514, type: 3}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[2].name
-      value: enemy damage
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 916ed7a134cb3c24ca521b2e968337b3, type: 3}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[3].name
-      value: dod
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4b5cba53e51484f4e9df14b8e48115ef, type: 3}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[4].name
-      value: vihu ampuu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[0].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[1].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[2].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[3].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[4].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[3].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020678559723069626, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
-      propertyPath: sounds.Array.data[4].volume
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5243711353425019445, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: playerScript
       value: 
@@ -2440,7 +2364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1696539329
 Transform:
   m_ObjectHideFlags: 0

@@ -273,6 +273,7 @@ if (pos.y <= 1.159951f )
 
      void AddGuns()
      {
+        FindObjectOfType<AudioManagerScript>().Play("more guns");
         powerUpGunLevel++;
         foreach(Gun gun in guns)
         {
@@ -290,6 +291,7 @@ if (pos.y <= 1.159951f )
      void SetSpeedMultiplier(float mult)
      {
         speedMultiplier = mult;
+        FindObjectOfType<AudioManagerScript>().Play("spiidii"); // tästä kuuluu ääni kun ottaa nopuden lisäys power upin
      }
 
 

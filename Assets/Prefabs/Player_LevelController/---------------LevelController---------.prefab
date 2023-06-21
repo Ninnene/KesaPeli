@@ -1476,16 +1476,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: bc83516ffdbd5f74fbeeb23a6300fb44, type: 2}
   sounds:
-  - name: shoot!
-    clip: {fileID: 8300000, guid: a5f0e9672691b284d9b907ed4d5c9e20, type: 3}
+  - name: shield
+    clip: {fileID: 8300000, guid: 39d5b706bcc98534a949a0dd462ba2e8, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: normal damage
     clip: {fileID: 8300000, guid: e5acb6dbd530b934e89aa42ac8291faa, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: enemy damage
+    clip: {fileID: 8300000, guid: 4c5d57bea3a6aa1439bf0ba9387af514, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: dod
+    clip: {fileID: 8300000, guid: 916ed7a134cb3c24ca521b2e968337b3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: vihu ampuu
+    clip: {fileID: 8300000, guid: 4b5cba53e51484f4e9df14b8e48115ef, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: more guns
+    clip: {fileID: 8300000, guid: 0c59b13c211cd9a4b826998e9dbf86e0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: spiidii
+    clip: {fileID: 8300000, guid: 585f9bcd2e1a20f4381059c6545a826c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: pisteet
+    clip: {fileID: 8300000, guid: e3d6bf1d1ea866848a18c522f27517f0, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!114 &4946532343493054796
