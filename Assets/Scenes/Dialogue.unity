@@ -185,6 +185,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &295713411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295713414}
+  - component: {fileID: 295713413}
+  - component: {fileID: 295713412}
+  m_Layer: 5
+  m_Name: FadeToBlack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &295713412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295713411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &295713413
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295713411}
+  m_CullTransparentMesh: 1
+--- !u!224 &295713414
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295713411}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -871}
+  m_LocalScale: {x: 0.27702156, y: 0.27702156, z: 0.27702156}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1303488077}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 811, y: 372.67932}
+  m_SizeDelta: {x: 800, y: 419.14}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &501114236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
@@ -528,7 +604,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 50a4bbc55a4e4154aba8f7c1bf856a33, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50a4bbc55a4e4154aba8f7c1bf856a33, type: 3}
       propertyPath: m_LocalScale.x
@@ -912,6 +988,8 @@ MonoBehaviour:
   textBox: {fileID: 1966575719}
   iPK: {fileID: 4411957}
   player: {fileID: 501114240}
+  blackImage: {fileID: 295713412}
+  fadeDuration: 2
 --- !u!4 &1303488077
 Transform:
   m_ObjectHideFlags: 0
@@ -919,13 +997,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303488075}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2927.57, y: -1346.4657, z: 3144.1597}
+  m_LocalScale: {x: 3.6098275, y: 3.6098275, z: 3.6098275}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Children:
+  - {fileID: 295713414}
+  m_Father: {fileID: 1837314485}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1319903046
 GameObject:
@@ -1009,15 +1088,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: IsoPahaKala
+    name: 
     sentences:
-    - 'Look at those Delicious little fishes over yonder. '
+    - 'Look at those delicious little fishes over yonder. '
     - I bet they are tasty and nootrishush.
     - 'It is settled then : I''ll eat em'' all!'
     - I wont let you eat my frieds!
-    - They are sentient beings so that makes you a murderer.
-    - I will stop you no matter what!
-    - Your mother is a hamster, and your father smelt like elderberries!
+    - They are sentient beings. Eating them makes you a murderer.
+    - I will stop you, no matter what!
+    - Your mother is a hamster, and your father smelt of elderberries!
+    - Catch me, if you can!
 --- !u!114 &1319903050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1280,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77ec386b8e5eba14ba00c5a88b80cf99, type: 3}
       propertyPath: m_LocalScale.x
@@ -1359,6 +1439,7 @@ RectTransform:
   - {fileID: 1319903047}
   - {fileID: 575057428}
   - {fileID: 1966575716}
+  - {fileID: 1303488077}
   - {fileID: 4411956}
   - {fileID: 501114237}
   m_Father: {fileID: 0}
@@ -1408,8 +1489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -449}
-  m_SizeDelta: {x: 800, y: 413.96}
+  m_AnchoredPosition: {x: -0.00029945, y: -456}
+  m_SizeDelta: {x: 941.46, y: 490.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966575717
 MonoBehaviour:
@@ -1596,7 +1677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2122826705
 GameObject:
@@ -1627,5 +1708,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class DialogueManager : MonoBehaviour
     public Animator textBox;
     public Animator iPK;
     public Animator player;
+
+
+    public Image blackImage;
+
+    // Duration of the fade in seconds
+    public float fadeDuration = 1f;
     //public Animator animator4;
 
 
@@ -44,13 +51,13 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextSentence()
     {
 
-        if(sentences.Count == 4)
+        if(sentences.Count == 5)
         {
             iPK.SetBool("IsOpen", false);
             player.SetBool("IsOpen", true);
         }
 
-        if(sentences.Count == 1)
+        if(sentences.Count <= 2)
         {
             iPK.SetBool("IsOpen", true);
             player.SetBool("IsOpen", false);
@@ -74,7 +81,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray()) // ToCharArray() on metodi joka muuttaa stringin kirjainlistaksi
         {
             dialogueText.text += letter;
-            yield return null; //Odotetaan yksi frame
+            yield return new WaitForSeconds(0.1f);  //Odotetaan yksi frame
         }
         
     }
@@ -84,10 +91,40 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("End of conversation");
         textBox.SetBool("IsOpen", false);
         iPK.SetBool("IsOpen", false);
-        //animator4.SetBool("IsOpen", false);
-        
+        StartCoroutine(FadeImage());
+        StartCoroutine(WaitAndLoadNextScene());       
     }
 
+        IEnumerator WaitAndLoadNextScene()
+        {
+            // Wait for 10 seconds
+            yield return new WaitForSeconds(3f);
+            // Load the next scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+
+         IEnumerator FadeImage()
+    {
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+        // Loop from 0 to 1 in fadeDuration seconds
+        for (float t = 0f; t < 1f; t += Time.deltaTime / fadeDuration)
+        {
+            // Set the alpha value of the image based on t
+            Color newColor = blackImage.color;
+            newColor.a = t;
+            blackImage.color = newColor;
+
+            // Wait for one frame
+            yield return null;
+        }
+
+        // Make sure the image is fully opaque at the end
+        Color finalColor = blackImage.color;
+        finalColor.a = 1f;
+        blackImage.color = finalColor;
+    }
 
 
 }
