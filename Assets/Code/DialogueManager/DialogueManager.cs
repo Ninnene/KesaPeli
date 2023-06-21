@@ -9,10 +9,13 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public Animator animator;
+    public Animator animator2;
+    public Animator animator3;
+    public Animator animator4;
 
 
     private Queue<string> sentences;  // Queue toimii hieman kuten listat ([]). 
-                                    //Se on "FIFO" = First in, first out - tyyppinen metodi. Se lataa aina seuraavan, tässä tapauksessa tekstin, listan lopusta.
+                                    //Se on "FIFO" = First in, first out - tyyppinen metodi. Se lataa aina seuraavan, tässä tapauksessa tekstin, listan alusta.
     void Start()
     {
         sentences = new Queue<string>();
@@ -22,6 +25,10 @@ public class DialogueManager : MonoBehaviour
    {
     
         animator.SetBool("IsOpen", true); // Aktivoidaan animator-komponentti
+        animator2.SetBool("IsOpen", true);
+        animator3.SetBool("IsOpen", true);
+        animator4.SetBool("IsOpen", true);
+        
 
         nameText.text = dialogue.name;
 
@@ -43,7 +50,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        //dialogueText.text = sentence; (Kutsutaan tämän sijaan co-routine TypeSentenceä)
+        //Tässä huonompi tapa : "dialogueText.text = sentence;" (Kutsutaan tämän sijaan co-routine TypeSentenceä)
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
@@ -63,6 +70,9 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("End of conversation");
         animator.SetBool("IsOpen", false);
+        animator2.SetBool("IsOpen", false);
+        animator3.SetBool("IsOpen", false);
+        animator4.SetBool("IsOpen", false);
         
     }
 }

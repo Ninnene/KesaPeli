@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-   public Dialogue dialogue;    // Tämä luonnollisesti lainaa Dialogue-luokkaa (Dialogue-Koodissa) joka nimetään dialogueksi tässä. (Siellä on nimi ja)
+   public Dialogue dialogue;    // Tämä luonnollisesti lainaa Dialogue-luokkaa (Dialogue-Koodissa) joka nimetään dialogueksi tässä.
 
    public void TriggerDialogue()
    {
