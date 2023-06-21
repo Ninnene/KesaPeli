@@ -8,10 +8,10 @@ public class DialogueManager : MonoBehaviour
 
     public Text nameText;
     public Text dialogueText;
-    public Animator animator;
-    public Animator animator2;
-    public Animator animator3;
-    public Animator animator4;
+    public Animator textBox;
+    public Animator iPK;
+    public Animator player;
+    //public Animator animator4;
 
 
     private Queue<string> sentences;  // Queue toimii hieman kuten listat ([]). 
@@ -24,10 +24,9 @@ public class DialogueManager : MonoBehaviour
    public void StartDialogue(Dialogue dialogue)
    {
     
-        animator.SetBool("IsOpen", true); // Aktivoidaan animator-komponentti
-        animator2.SetBool("IsOpen", true);
-        animator3.SetBool("IsOpen", true);
-        animator4.SetBool("IsOpen", true);
+        textBox.SetBool("IsOpen", true); // Aktivoidaan animator-komponentti
+        iPK.SetBool("IsOpen", true);
+        //animator4.SetBool("IsOpen", true);
         
 
         nameText.text = dialogue.name;
@@ -44,6 +43,20 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+
+        if(sentences.Count == 4)
+        {
+            iPK.SetBool("IsOpen", false);
+            player.SetBool("IsOpen", true);
+        }
+
+        if(sentences.Count == 1)
+        {
+            iPK.SetBool("IsOpen", true);
+            player.SetBool("IsOpen", false);
+        }
+
+
         if(sentences.Count == 0)
         {
             EndDialogue();
@@ -69,10 +82,12 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         Debug.Log("End of conversation");
-        animator.SetBool("IsOpen", false);
-        animator2.SetBool("IsOpen", false);
-        animator3.SetBool("IsOpen", false);
-        animator4.SetBool("IsOpen", false);
+        textBox.SetBool("IsOpen", false);
+        iPK.SetBool("IsOpen", false);
+        //animator4.SetBool("IsOpen", false);
         
     }
+
+
+
 }
