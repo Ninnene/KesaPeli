@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class AttackPlayer : MonoBehaviour
 {
+
+    PauseMenuSCRIPT pauseMenuSCRIPT;
+    bool pause = false;
+
     // Valitse kohde (Inspector)
+    //public Transform target;
     public Transform target;
 
     // Liikkumisnopeus
@@ -12,6 +17,9 @@ public class AttackPlayer : MonoBehaviour
     void Update()
     {
 
+        target = GameObject.Find("PikkuKala").GetComponent<Transform>();
+        
+
         if (target != null)
         {
         // Calculate the maximum distance to move per frame
@@ -20,9 +28,15 @@ public class AttackPlayer : MonoBehaviour
         // Liikuta objetia (.this) päin kahdetta. (target.position)
         transform.position = Vector3.MoveTowards(transform.position, target.position, maxDistanceDelta);
         }
-        if (!target)
+
+        if (!target )
         {
         speed = 0.2f;
+
+        if (PauseMenuSCRIPT.GameIsPaused)
+        {
+            speed = 0;
+        }
 
         Vector2 position = transform.position;
 
