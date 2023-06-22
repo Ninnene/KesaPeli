@@ -102,7 +102,7 @@ public class BossCode : MonoBehaviour
     
     void Update()
     {
-
+        /*
         if (Input.GetKeyDown(KeyCode.Escape) && pleasePause == false)
         {
             pleasePause = true;   
@@ -113,7 +113,7 @@ public class BossCode : MonoBehaviour
             pleasePause = false;  
             Debug.Log("Pause = " + pleasePause);
         }
-
+        */
 
 
 
@@ -174,7 +174,7 @@ public class BossCode : MonoBehaviour
     {
     spawnIPK = false;
 
-    Debug.Log("Fetch middle attack");
+    //Debug.Log("Fetch middle attack");
 
     attackMiddle = true;
 
@@ -184,13 +184,12 @@ public class BossCode : MonoBehaviour
     {
 
     
-    Debug.Log("Fetch up attack");
+    //Debug.Log("Fetch up attack");
     StartCoroutine(AttackUpDown()); 
     }
-
     if (startIPKDownUpAttack == true && startIPKUpDownAttack == false && hitpoints >0)
     {
-    Debug.Log("Fetch down attack");
+    //Debug.Log("Fetch down attack");
     
     StartCoroutine(AttackDownUp());
     }
@@ -269,11 +268,6 @@ public class BossCode : MonoBehaviour
         yield return null;
         }
             
-            
-            
-        if(transform.position == moveTillUp && hitpoints >0)
-        
-       
 
       //  Debug.Log("moveTillDown = " + moveTillDown);
 
