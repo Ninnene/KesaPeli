@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
+    DialogueTrigger dialogueTrigger;
+    bool keyPress;
+    bool startDialogue = false;
 
     public Text nameText;
     public Text dialogueText;
@@ -26,10 +29,29 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        gameObject.transform.GetChild(3).gameObject.SetActive(false);
     }
 
+    void Update() 
+    {
+        //keyPress = Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Return);
+
+        if (Input.anyKeyDown && !keyPress)
+        {
+            keyPress = true;
+            DisplayNextSentence();
+            keyPress = false;
+        }
+    }
+
+    
    public void StartDialogue(Dialogue dialogue)
    {
+    
+
+        startDialogue = true;
     
         textBox.SetBool("IsOpen", true); // Aktivoidaan animator-komponentti
         iPK.SetBool("IsOpen", true);
@@ -47,18 +69,24 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
 
    }
-
+    
     public void DisplayNextSentence()
-    {
-
+    {      
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        
         if(sentences.Count == 5)
         {
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            gameObject.transform.GetChild(2).gameObject.SetActive(true);
             iPK.SetBool("IsOpen", false);
             player.SetBool("IsOpen", true);
         }
 
         if(sentences.Count <= 2)
-        {
+        {   
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            //gameObject.transform.GetChild(2).gameObject.SetActive(true);
             iPK.SetBool("IsOpen", true);
             player.SetBool("IsOpen", false);
         }
@@ -103,7 +131,6 @@ public class DialogueManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-
          IEnumerator FadeImage()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -125,6 +152,4 @@ public class DialogueManager : MonoBehaviour
         finalColor.a = 1f;
         blackImage.color = finalColor;
     }
-
-
 }
