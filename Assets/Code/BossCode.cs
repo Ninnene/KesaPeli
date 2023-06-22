@@ -42,6 +42,7 @@ public class BossCode : MonoBehaviour
     float bubbleSpeed = 0.3f;
 
     Vector3 bubbleStartPosition;
+
     bool startIPKUpDownAttack = false;
 
     bool startIPKDownUpAttack = false;
@@ -65,6 +66,9 @@ public class BossCode : MonoBehaviour
     Vector3 iPKDownModdedPosition;  // Arvottu piste    (RandomRange)
 
 
+    Vector3 moveDownVector; // Kala liikkuu arvotun pisteen jälkeen tänne
+
+
     Vector3 iPKUpMoveTillRight = new Vector3(-0.49000001f,21.1800003f,-14.04f);
 
     Vector3 iPKDownMoveTillLeft = new Vector3(18.5400009f,-11.5900002f,-14.04f);
@@ -73,7 +77,7 @@ public class BossCode : MonoBehaviour
 
     Vector3 deathPosition = new Vector3(20.2900009f,-4.4000001f,-5.23600006f);
 
-
+    public bool pleasePause = false;
     
     void Start()
     {
@@ -98,7 +102,21 @@ public class BossCode : MonoBehaviour
     
     void Update()
     {
-        
+
+        if (Input.GetKeyDown(KeyCode.Escape) && pleasePause == false)
+        {
+            pleasePause = true;   
+            Debug.Log("Pause = " + pleasePause);   
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && pleasePause == true)
+        {
+            pleasePause = false;  
+            Debug.Log("Pause = " + pleasePause);
+        }
+
+
+
+
 
         if (hitpoints <= 0)
             {
@@ -162,9 +180,10 @@ public class BossCode : MonoBehaviour
 
     StartCoroutine(AttackMiddle());
     }
-
     if (startIPKUpDownAttack == true && hitpoints >0)
     {
+
+    
     Debug.Log("Fetch up attack");
     StartCoroutine(AttackUpDown()); 
     }
@@ -172,8 +191,12 @@ public class BossCode : MonoBehaviour
     if (startIPKDownUpAttack == true && startIPKUpDownAttack == false && hitpoints >0)
     {
     Debug.Log("Fetch down attack");
+    
     StartCoroutine(AttackDownUp());
     }
+
+
+    
 
     }
 
@@ -207,7 +230,7 @@ public class BossCode : MonoBehaviour
 
     IEnumerator AttackMiddle()
     {    
-       
+        
         Debug.Log("Start Attack from middle");
 
         attackMiddle = false;
@@ -350,6 +373,8 @@ public class BossCode : MonoBehaviour
 
                 IEnumerator AttackUpDown()
                 {
+
+                
                     Debug.Log("AttackUpDown()");
 
                     canBeDestoyed = false;
@@ -381,8 +406,21 @@ public class BossCode : MonoBehaviour
 
 
                     // Tuotetaan varoituskuplat :
+                    Vector3 moveDownVector = new Vector3(iPKUpModdedPosition.x, iPKUpModdedPosition.y - 30f, iPKUpModdedPosition.z);
+                    
+                    while (bubbles.transform.position != moveDownVector && hitpoints >0)
+                    {
+                    bubbles.transform.position = Vector3.MoveTowards(bubbles.transform.position, moveDownVector, iPKSpeed * 2.5f * Time.deltaTime);
+                    yield return null;
+                    }
 
-
+                    
+                    while (iPKUp.transform.position != moveDownVector && hitpoints >0)
+                    {
+                    iPKUp.transform.position = Vector3.MoveTowards(iPKUp.transform.position, moveDownVector, iPKSpeed * 5 * Time.deltaTime);
+                    yield return null;
+                    }
+                    /*
                     while (bubbles.transform.position.y > -0.0246f)
                     {
                   //      Debug.Log("Bubbles");
@@ -393,13 +431,15 @@ public class BossCode : MonoBehaviour
 
                         bubbles.transform.position = position;
 
+                        
                         yield return null;
-                    }
+                        
+                    }*/
 
                     // Laitetaan yläkala hyökkäämään kun kuplat ovat alhaalla :
 
 
-                    while (iPKUp.transform.position.y > -8.15f && bubbles.transform.position.y > -8.15)
+                    while (iPKUp.transform.position.y > -8.15f && bubbles.transform.position == moveDownVector)
                     {
                         repeatUpDownAttack++;
 
@@ -413,7 +453,9 @@ public class BossCode : MonoBehaviour
 
                         iPKUp.transform.position = position;
 
+                         
                         yield return null;
+                        
                     }
 
                     // Valmistellaan seuraava vaihe :
@@ -452,9 +494,25 @@ public class BossCode : MonoBehaviour
                       //  Debug.Log("Alakalan positio on = " + iPKDownStartPosition);
 
                         
+                    Vector3 moveDownVector = new Vector3(iPKDownModdedPosition.x, iPKDownModdedPosition.y + 30f, iPKDownModdedPosition.z);
+                    
+                    while (bubbles.transform.position != moveDownVector && hitpoints >0)
+                    {
+                    bubbles.transform.position = Vector3.MoveTowards(bubbles.transform.position, moveDownVector, iPKSpeed * 2.5f * Time.deltaTime);
+                    yield return null;
+                    }
+
+                    
+                    while (iPKDown.transform.position != moveDownVector && hitpoints >0)
+                    {
+                    iPKDown.transform.position = Vector3.MoveTowards(iPKDown.transform.position, moveDownVector, iPKSpeed * 5 * Time.deltaTime);
+                    yield return null;
+                    }
+
+
 
                     // Tuotetaan varoituskuplat :
-
+                        /*
                         while (bubbles.transform.position.y < 15)
                         {
                          //   Debug.Log("Bubbles from down" + bubbles.transform.position);
@@ -466,18 +524,19 @@ public class BossCode : MonoBehaviour
                             bubbles.transform.position = position;
 
                         //    Debug.Log("Does bubbles transform change?" + bubbles.transform.position);
-
-                            yield return null;
+                       
+                    
+                        yield return null;
+                        
                         }
-
+                            */
 
                         bubbles.transform.position = bubbleStartPosition;
 
                      // Laitetaan alakala hyökkäämään kun kuplat ovat ylhäällä :
 
-
+                        /*
                         while (iPKDown.transform.position.y < 17.91f && bubbles.transform.position == bubbleStartPosition)
-
                         {
 
                             //Debug.Log("Start AttackDownUp");
@@ -491,9 +550,11 @@ public class BossCode : MonoBehaviour
                             
 
                            // startIPKDownUpAttack = false;
-                            yield return null;
+                       
+                        yield return null;
+                        
                         }
-
+                        */
                         // Jos kaikki alla olevat ehdot asetetaan rupeaa keskuskala ampumaan sekä ylä- ja alakala hyökkäämään loputtomasti :
                         
                         //transform.position = attackPositionStart;

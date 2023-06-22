@@ -19,8 +19,8 @@ public class LevelController : MonoBehaviour
 
 
     
-    int score = 0;
-    Text scoreNumber;
+    public int score = 0;
+    public Text scoreNumber;
 
     private void Awake()        // Kun tämä koodi luodaan tarkistetaan onko instancella arvoa. Jos ei,  asetetaan instance-muuttujan arvoksi ".this" - eli ymmärtääkseni koko koodi. 
     {                           // Seuraavaksi suojataan gameObject tuhoamiselta. Else taas tuhoaa gameObjectin jos niitä on sceneä ladatessa useita
