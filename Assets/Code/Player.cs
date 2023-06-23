@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
 
 
 // Hiparit :
-    public int hits = 3;
+    [SerializeField] public int pMaxHP = 3;
+    [SerializeField] public int hits = 3;
     bool invincible = false;
     float invincibleTimer = 0;
     public float invincibleTime = 2;
+    [SerializeField] FloatingHealtbarP healthBar; //Ui HP slideri tähän
 
 
 
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         initialPosition = transform.position;   //Pelaaja palaa tähän kuollessaan.
-
+        healthBar = GetComponentInChildren<FloatingHealtbarP>();
        // renderer = transform.Find("Renderer").GetComponent<Renderer>();
     }
 
@@ -63,7 +65,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {   
-
+        hits = pMaxHP;
+        healthBar = GetComponentInChildren<FloatingHealtbarP>();
         shield = transform.Find("Shield").gameObject;
         DeactivateShield();
 
@@ -322,6 +325,7 @@ if (pos.y <= 1.159951f )
                 Debug.Log("Invincible!");
 
                 hits--;
+                healthBar.UpdateHealthBar(hits, pMaxHP);
                 Debug.Log("Hits left: " + hits);
 
                 if(hits == 0)
