@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossCode : MonoBehaviour
 {
     
-    public float hitpoints = 500;
+    [SerializeField] FloatingHealthBar healthBar; //Ui HP slideri tähän
+    
+    [SerializeField] public float hitpoints;
+    [SerializeField] public float maxHP = 500;
+    public float currentHp;
 
     bool canBeDestoyed = false;
 
@@ -79,6 +84,11 @@ public class BossCode : MonoBehaviour
 
     public bool pleasePause = false;
     
+
+    private void Awake() // Awake metodi jotta voidaan käyttää HP palkkia
+    {
+        healthBar = GetComponentInChildren<FloatingHealthBar>();
+    }
     void Start()
     {
 
@@ -94,6 +104,9 @@ public class BossCode : MonoBehaviour
 
 
         bubbleStartPosition = bubbles.transform.position;   // Kuplien aloituspaikka
+        
+        hitpoints = maxHP;
+        healthBar = GetComponentInChildren<FloatingHealthBar>();
 
 
     }
@@ -217,6 +230,8 @@ public class BossCode : MonoBehaviour
             {FindObjectOfType<AudioManagerScript>().Play("enemy damage"); // tämä aktivoi vihun damage äänen
 
                 --hitpoints;
+                //currentHp = maxHP - hitpoints;
+                healthBar.UpdateHealthBar(hitpoints, maxHP);
                 Destroy(bullet.gameObject);
             }
             
@@ -571,6 +586,7 @@ public class BossCode : MonoBehaviour
                         
 
                     }
+                    
 
 
     
