@@ -2,14 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
 {
 
-    Vector2 initialPosition;
+    // Game over - ruutuun ja pelin aloittamiseen liittyvää koodia.
+
+    float fadeDuration = 3; // Miten nopeasti ruutu pimenee kun kuolee
+    public Image blackImage;   // Tämä kuva tulee kaiken päälle. (Se on deaktivoitu ennen gameoveria)
+    Vector3 playerDeathPosition;
 
     
+
+    bool playerDeathMovement = false;
+    public bool playerDeathMovementPaused = false;
+    // GameOver end /
+
+
+    Vector3 initialPosition;   // Pelaajan lähtöpaikka
 
     //Array of guns :p
     Gun[] guns;
@@ -65,6 +77,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {   
+        playerDeathMovementPaused = false;  // playerDeathMovement = disabled in FadeImage()
         hits = pMaxHP;
         healthBar = GetComponentInChildren<FloatingHealtbarP>();
         shield = transform.Find("Shield").gameObject;
@@ -87,13 +100,16 @@ public class Player : MonoBehaviour
    
     void Update()
     {
+
+        if (playerDeathMovement == false)
+        {
         moveUp = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
         moveDown = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
         moveLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         moveRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
 
         speedUp = Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift);
-
+        }
 
         //Space ampuu kerran & LCTRL ampuu sarjaa. Tämä voidaan mahdollistaa esimerkiksi power-upilla.
         shoot = Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl);
@@ -231,27 +247,29 @@ public class Player : MonoBehaviour
 
 
 
-//Rajoitetaan liikkuminen kameran alueelle:
-    if (pos.x <= 1.685599f )
-    {
-        pos.x = 1.685599f;
-    }
-    if (pos.x >= 15.6856f )
-    {
-        pos.x = 15.6856f;
-    }
+        //Rajoitetaan liikkuminen kameran alueelle. Jos pelaaja on kuollut otetaan pois päältä:
+        if (playerDeathMovementPaused == false)
+        {
+            if (pos.x <= 1.685599f )
+            {
+                pos.x = 1.685599f;
+            }
+            if (pos.x >= 15.6856f )
+            {
+                pos.x = 15.6856f;
+            }
 
-if (pos.y <= 1.159951f )
-    {
-        pos.y = 1.159951f;
-    }
-    if (pos.y >= 9.15995f )
-    {
-        pos.y = 9.15995f;
-    }
-    transform.position = pos;
-    }
-
+        if (pos.y <= 1.159951f )
+            {
+                pos.y = 1.159951f;
+            }
+            if (pos.y >= 9.15995f )
+            {
+                pos.y = 9.15995f;
+            }
+            transform.position = pos;
+            }
+        }
 
      // Kilpi
     void ActivateShield()
@@ -298,16 +316,20 @@ if (pos.y <= 1.159951f )
      }
 
 
-    void ResetShip() 
+    public void ResetShip() // ResetShip() Käytetään kun pelaaja kuolee
     {
-        transform.position = initialPosition;
+        Debug.Log("ResetShip()");
+        playerDeathMovementPaused = true;
         DeactivateShield();
         FindObjectOfType<AudioManagerScript>().Play("shield");// shieldi särkyy ääni
         powerUpGunLevel = -1;
         AddGuns();
         SetSpeedMultiplier(1);
         hits = 3;
-        LevelController.instance.ResetLevel();
+        StartCoroutine(FadeImage());
+        StartCoroutine(PlayerDeathMovement());
+        StartCoroutine(WaitAndLoadNextScene());
+        
     }
 
     void Hit(GameObject gameObjectHit)
@@ -345,28 +367,23 @@ if (pos.y <= 1.159951f )
         // Collisions :
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Player collision triggered.");
+        //Debug.Log("Player collision triggered.");
 
 
         // Loppupomotaisteluun liittyvää koodia.
 
         if (collision.name == "IPKUp")
         {
-            Destroy(gameObject);
+            ResetShip();
         }
         if (collision.name == "IPKDown")
         {
-            Destroy(gameObject);
+            ResetShip();
         }
         if (collision.name == "IPKMain")
         {
-            Destroy(gameObject);
+            ResetShip();
         }
-
-
-            
-
-
 
         // /
 
@@ -409,4 +426,85 @@ if (pos.y <= 1.159951f )
         }
 
     }
+
+
+            IEnumerator WaitAndLoadNextScene()
+            {
+                // Wait for X seconds
+                yield return new WaitForSeconds(4f);
+                // Load the next scene
+                LevelController.instance.ResetLevel(); 
+                blackImage = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Image>();
+                blackImage.gameObject.SetActive(false);
+                Renderer renderer = GetComponent<Renderer>();
+                renderer.enabled = true;
+                transform.position = new Vector3(-14.5200005f,-2.69276762f,-6.30999994f);
+
+                while (transform.position != initialPosition)
+                    {
+                    transform.position = Vector3.MoveTowards(transform.position, initialPosition, moveSpeed  * 2.5f * Time.deltaTime);
+                    yield return null;
+                    }
+                    if (transform.position == initialPosition)
+                    {
+                        playerDeathMovementPaused = false;
+                    }
+            }
+
+         public IEnumerator FadeImage()
+         {
+            playerDeathMovementPaused = true;
+
+            blackImage = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Image>();
+            
+            blackImage.gameObject.SetActive(true);
+
+            // Loop from 0 to 1 in fadeDuration seconds
+            for (float t = 0f; t < 1f; t += Time.deltaTime / fadeDuration)
+            {
+                // Set the alpha value of the image based on t
+                Color newColor = blackImage.color;
+                newColor.a = t;
+                blackImage.color = newColor;
+
+                // Wait for one frame
+                yield return null;
+            }
+
+            // Make sure the image is fully opaque at the end
+            Color finalColor = blackImage.color;
+            finalColor.a = 1f;
+            blackImage.color = finalColor;
+
+            }
+
+             
+           public IEnumerator PlayerDeathMovement()
+            {
+                Renderer renderer = GetComponent<Renderer>();
+                
+                Vector3 playerDeathPosition = gameObject.transform.position;
+                playerDeathPosition.y -= 5;
+
+                while (transform.position != playerDeathPosition)
+                {
+                    Renderer.enabled = !Renderer.enabled;
+
+                    transform.position = Vector3.MoveTowards(gameObject.transform.position, playerDeathPosition, moveSpeed * Time.deltaTime);
+                    yield return null;
+
+                        if(transform.position == playerDeathPosition && playerDeathMovementPaused == true)
+                        {   
+                            renderer.enabled = false;
+                        }
+                }
+
+                
+                
+            }
+
+
+
+
+
 }

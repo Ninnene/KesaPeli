@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IsoPahaKala : MonoBehaviour
 {
+    private Player playerScript;
 
     public float ipkSpeed = 5f;
     public float ipkLeft = 100f;
@@ -120,13 +121,16 @@ public class IsoPahaKala : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider collision)
-    {
+    {   
+        playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
 
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            FindObjectOfType<AudioManagerScript>().Play("dod"); //pelaaja kuolee ääni
-            LevelController.instance.ResetLevel();
+        FindObjectOfType<AudioManagerScript>().Play("dod"); //pelaaja kuolee ääni
+            
+        playerScript.ResetShip();
+            
         }
     }
        

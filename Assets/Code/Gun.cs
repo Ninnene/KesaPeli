@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    private Player playerScript;
+    
 
     public int powerUpLeveleRequirement = 0;
 
@@ -31,7 +33,8 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        playerScript = GameObject.Find("PikkuKala").GetComponent<Player>(); // Etsitään Player jotta voidaan pysäyttää ampuminen jos pelaaja on kuollut.
+
         if (!isActive)
         {
             return;
@@ -42,7 +45,9 @@ public class Gun : MonoBehaviour
 
         // Autoshoot :
 
-        if (autoShoot)
+        bool gunsArePaused = playerScript.playerDeathMovementPaused;
+
+        if (autoShoot && gunsArePaused == false)
        {
             //IPK.gameObject.GetComponent<MeshFilter>().mesh = normalMesh;
             
@@ -69,11 +74,16 @@ public class Gun : MonoBehaviour
         // Autoshoot /
 
     public void Shoot()
-    {
+    {   
+        bool gunsArePaused = playerScript.playerDeathMovementPaused;
+
+        if (gunsArePaused == false)
+        {
         //Luoti luodaan samaan paikkaan missä Gun on 
         GameObject go = Instantiate(bullet.gameObject, transform.position, Quaternion.identity);
         Bullet goBullet = go.GetComponent<Bullet>();
         goBullet.direction = direction;
+        }
     }
 
 }

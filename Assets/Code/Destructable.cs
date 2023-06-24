@@ -39,7 +39,7 @@ public class Destructable : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
     
-        Debug.Log("Collision detected in original Destructable!");
+        //Debug.Log("Collision detected in original Destructable!");
 
         if(!canBeDestoyed)
         {
