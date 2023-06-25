@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
         initialPosition = transform.position;   //Pelaaja palaa tähän kuollessaan.
         healthBar = GetComponentInChildren<FloatingHealtbarP>();
        // renderer = transform.Find("Renderer").GetComponent<Renderer>();
+       
     }
 
     //Kilpi
@@ -93,6 +94,8 @@ public class Player : MonoBehaviour
                 gun.gameObject.SetActive(false);
             }
         }
+        
+
     }
 
    
@@ -315,7 +318,8 @@ public class Player : MonoBehaviour
 
 
     public void ResetShip() // ResetShip() Käytetään kun pelaaja kuolee
-    {
+    {   
+        gameObject.GetComponent<BoxCollider>().enabled = false;
         Debug.Log("ResetShip()");
         playerDeathMovementPaused = true;
         DeactivateShield();
@@ -446,6 +450,7 @@ public class Player : MonoBehaviour
                     if (transform.position == initialPosition)
                     {
                         playerDeathMovementPaused = false;
+                        gameObject.GetComponent<BoxCollider>().enabled = true;
                     }
             }
 
