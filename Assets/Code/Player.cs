@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     // Jos IPK-pomo kuolee tuhotaan pomo-gameobject ja ajetaan seuraava scene FadeImage()-coroutinessa.
     BossCode bossIsDead;
+    LevelController levelController;
     // /
 
     // Game over - ruutuun ja pelin aloittamiseen liittyvää koodia.
@@ -486,11 +487,16 @@ public class Player : MonoBehaviour
             blackImage.color = finalColor;
 
             bossIsDead = GetComponent<BossCode>();
+            levelController = GetComponent<LevelController>();
             if (bossIsDead == null)
             {   
+                
+
                 Debug.Log("bossIsDead");
                  SceneManager.LoadScene("Epilogue");
                  blackImage.gameObject.SetActive(false);
+                 Destroy(gameObject);
+                 Destroy(levelController);
             }
         }
 
