@@ -585,15 +585,17 @@ public class BossCode : MonoBehaviour
                     transform.position = Vector3.MoveTowards(transform.position, deathPosition, iPKDeathSpeed * Time.deltaTime);
                     transform.rotation *= Quaternion.AngleAxis(iPKSpeed * 10 * Time.deltaTime, Vector3.left);
 
-                    if(transform.position == deathPosition)
+                    while(transform.position == deathPosition)
                     {
                         
                         playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
                         playerScript.StartCoroutine("FadeImage");
 
                         Destroy(gameObject);  
+
+                        yield return null;   
                     }
-                    yield return null;   
+                    
 
                     
                 }
