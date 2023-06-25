@@ -694,51 +694,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 970323613, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323614, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_RenderMode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 799.99994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 376.7695
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.026541429
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.026541429
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.026541429
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 75.877594
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.980774
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 970323615, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.6843872
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1363679604, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

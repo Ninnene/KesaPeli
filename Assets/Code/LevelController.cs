@@ -13,7 +13,7 @@ public class LevelController : MonoBehaviour
     bool startNextLevel = false;
     float nextLevelTimer = 3;
 
-    string[] levels = {"Level1", "Level2, Boss"};
+    string[] levels = {"Level1", "Level2, Boss, Epilogue"};
     int currentLevel = 1;
 
 

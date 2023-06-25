@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class BossCode : MonoBehaviour
 {
-    
+    Player playerScript; // Luodaan playerScript jonka avulla kutsutaan pomon kuollessa Player-koodista FadeImage() - metodia.
+    //int fadeDuration = 3; Saako FadeImage() kutsuttua fadeDuration-muuttujaa niin, että sitä ei tarvita tässä?
     [SerializeField] FloatingHealthBar healthBar; //Ui HP slideri tähän
     
     [SerializeField] public float hitpoints;
@@ -128,38 +129,12 @@ public class BossCode : MonoBehaviour
         }
         */
 
-
-
-
-        if (hitpoints <= 0)
-            {
-                Debug.Log("Blargh. I'm ded.");
-                
-                gameObject.GetComponent<BoxCollider>().enabled = false;
-
-
-                Renderer.enabled =! Renderer.enabled;
-
-                gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                gameObject.transform.GetChild(2).gameObject.SetActive(false);
-                gameObject.transform.GetChild(3).gameObject.SetActive(false);
-                gameObject.transform.GetChild(4).gameObject.SetActive(false);
-                gameObject.transform.GetChild(5).gameObject.SetActive(false);
-                gameObject.transform.GetChild(6).gameObject.SetActive(false);
-                gameObject.transform.GetChild(6).gameObject.SetActive(false);
-                gameObject.transform.GetChild(7).gameObject.SetActive(false);
         
-                
 
-                transform.position = Vector3.MoveTowards(transform.position, deathPosition, iPKDeathSpeed * Time.deltaTime);
-                transform.rotation *= Quaternion.AngleAxis(iPKSpeed * 10 * Time.deltaTime, Vector3.left);
 
-                if(transform.position == deathPosition)
-                {
-                    Destroy(gameObject);
-                }
-                
+        if (hitpoints <= 0) 
+            {
+               StartCoroutine(BossDeath());
             }
 
 
@@ -588,8 +563,43 @@ public class BossCode : MonoBehaviour
                     }
                     
 
+             public IEnumerator BossDeath()
+                {
+                    Debug.Log("Blargh. I'm ded.");
+                
+                    gameObject.GetComponent<BoxCollider>().enabled = false;
 
-    
+
+                    Renderer.enabled =! Renderer.enabled;
+
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(5).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(6).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(6).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(7).gameObject.SetActive(false);
+            
+                    
+
+                    transform.position = Vector3.MoveTowards(transform.position, deathPosition, iPKDeathSpeed * Time.deltaTime);
+                    transform.rotation *= Quaternion.AngleAxis(iPKSpeed * 10 * Time.deltaTime, Vector3.left);
+
+                    if(transform.position == deathPosition)
+                    {
+                        
+                        playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
+                        playerScript.StartCoroutine("FadeImage");
+
+                        yield return null;
+
+                        Destroy(gameObject);      
+
+                    }
+                }
+                  
        
         
 

@@ -15,8 +15,6 @@ public class Player : MonoBehaviour
     Vector3 playerDeathPosition;
 
     
-
-    bool playerDeathMovement = false;
     public bool playerDeathMovementPaused = false;
     // GameOver end /
 
@@ -101,7 +99,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (playerDeathMovement == false)
+        if (playerDeathMovementPaused == false)
         {
         moveUp = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
         moveDown = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
