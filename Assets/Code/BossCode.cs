@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossCode : MonoBehaviour
 {
@@ -591,8 +592,7 @@ public class BossCode : MonoBehaviour
                         playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
                         playerScript.StartCoroutine("FadeImage");
 
-                        Destroy(gameObject);  
-
+                        Destroy(gameObject); 
                         yield return null;   
                     }
                     

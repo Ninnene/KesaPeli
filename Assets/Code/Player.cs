@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+
+    // Jos IPK-pomo kuolee tuhotaan pomo-gameobject ja ajetaan seuraava scene FadeImage()-coroutinessa.
+    BossCode bossIsDead;
+    // /
 
     // Game over - ruutuun ja pelin aloittamiseen liittyvää koodia.
 
@@ -76,6 +80,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {   
+        
         playerDeathMovementPaused = false;  // playerDeathMovement = disabled in FadeImage()
         hits = pMaxHP;
         healthBar = GetComponentInChildren<FloatingHealtbarP>();
@@ -101,6 +106,7 @@ public class Player : MonoBehaviour
    
     void Update()
     {
+
 
         if (playerDeathMovementPaused == false)
         {
@@ -434,7 +440,7 @@ public class Player : MonoBehaviour
             {
                 // Wait for X seconds
                 yield return new WaitForSeconds(4f);
-                // Load the next scene
+                // Reset
                 LevelController.instance.ResetLevel(); 
                 blackImage = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Image>();
                 blackImage.gameObject.SetActive(false);
@@ -454,7 +460,7 @@ public class Player : MonoBehaviour
                     }
             }
 
-         public IEnumerator FadeImage()
+         public IEnumerator FadeImage()  // Tämä koodi huolehtii seuraavan scenen lataamisesta kun Pomo kuolee
          {
             playerDeathMovementPaused = true;
 
@@ -479,7 +485,14 @@ public class Player : MonoBehaviour
             finalColor.a = 1f;
             blackImage.color = finalColor;
 
+            bossIsDead = GetComponent<BossCode>();
+            if (bossIsDead == null)
+            {   
+                Debug.Log("bossIsDead");
+                 SceneManager.LoadScene("Epilogue");
+                 blackImage.gameObject.SetActive(false);
             }
+        }
 
              
            public IEnumerator PlayerDeathMovement()
@@ -506,8 +519,17 @@ public class Player : MonoBehaviour
                 
             }
 
+        IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
+        {
+            // Wait for the specified amount of time
+            yield return new WaitForSecondsRealtime(delay);
 
+            // Load the new scene
+            SceneManager.LoadScene(sceneName);
 
+            yield return new WaitForSecondsRealtime(delay);
+        }
+        
 
 
 }
