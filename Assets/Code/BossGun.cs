@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossGun : MonoBehaviour
 {
-
+    private Player playerScript;
     public int powerUpLeveleRequirement = 0;
 
     public Bullet bullet;
@@ -38,6 +38,9 @@ public class BossGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        playerScript = GameObject.Find("PikkuKala").GetComponent<Player>(); // Etsitään Player jotta voidaan pysäyttää ampuminen jos pelaaja on kuollut.
+
        
         if (mouthTimer >0)
         {
@@ -61,7 +64,9 @@ public class BossGun : MonoBehaviour
 
         // Autoshoot :
 
-        if (autoShoot)
+        bool gunsArePaused = playerScript.playerDeathMovementPaused; // Jos pelaaja on kuollut = playerDeathMovement = true
+
+        if (autoShoot && gunsArePaused == false)
        {
             //IPK.gameObject.GetComponent<MeshFilter>().mesh = normalMesh;
             

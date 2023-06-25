@@ -45,7 +45,7 @@ public class Gun : MonoBehaviour
 
         // Autoshoot :
 
-        bool gunsArePaused = playerScript.playerDeathMovementPaused;
+        bool gunsArePaused = playerScript.playerDeathMovementPaused; // Jos pelaaja on kuollut = playerDeathMovement = true
 
         if (autoShoot && gunsArePaused == false)
        {

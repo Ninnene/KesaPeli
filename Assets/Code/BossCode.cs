@@ -134,6 +134,7 @@ public class BossCode : MonoBehaviour
 
         if (hitpoints <= 0) 
             {
+                
                StartCoroutine(BossDeath());
             }
 
@@ -565,10 +566,7 @@ public class BossCode : MonoBehaviour
 
              public IEnumerator BossDeath()
                 {
-                    Debug.Log("Blargh. I'm ded.");
-                
                     gameObject.GetComponent<BoxCollider>().enabled = false;
-
 
                     Renderer.enabled =! Renderer.enabled;
 
@@ -593,11 +591,11 @@ public class BossCode : MonoBehaviour
                         playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
                         playerScript.StartCoroutine("FadeImage");
 
-                        yield return null;
-
-                        Destroy(gameObject);      
-
+                        Destroy(gameObject);  
                     }
+                    yield return null;   
+
+                    
                 }
                   
        
