@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
     void ActivateShield()
     {
         shield.SetActive(true);
-        FindObjectOfType<AudioManagerScript>().Play("shield"); // Ajattelin laittaa tänne shieldin oman äänen mutta toistaiseksi tämä on vain testi käytössä
+        FindObjectOfType<AudioManagerScript>().Play("shield"); // Shieldin ääni aktivoidaan tässä
         //Debug.Log("shield");
     }
     public void DeactivateShield()
@@ -402,7 +402,7 @@ public class Player : MonoBehaviour
             if (bullet.isEnemy)
             {
             Hit(bullet.gameObject);
-            FindObjectOfType<AudioManagerScript>().Play("normal damage");// tämä aktivoi peaajan gamagen saamis äänen 
+            FindObjectOfType<AudioManagerScript>().Play("normal damage");// tämä aktivoi peaajan damagen saamis äänen 
             }
         }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;      // Tämä on uusi kirjasto
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class LevelController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class LevelController : MonoBehaviour
 
     
     public int score = 0;
-    public Text scoreNumber;
+    public TMP_Text scoreNumber;
 
     private void Awake()        // Kun tämä koodi luodaan tarkistetaan onko instancella arvoa. Jos ei,  asetetaan instance-muuttujan arvoksi ".this" - eli ymmärtääkseni koko koodi. 
     {                           // Seuraavaksi suojataan gameObject tuhoamiselta. Else taas tuhoaa gameObjectin jos niitä on sceneä ladatessa useita
@@ -29,7 +30,7 @@ public class LevelController : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);          // Tämä koodi käyttää Awake-metodissa DontDestroyOnLoad-metodia(gameObject) 
         
-        scoreNumber = GameObject.Find("ScoreNumber").GetComponent<Text>();  // En tiedä millä komennolla löydetään tekstikomponentti TMP:stä, joten tässä käytetty tavallista tekstiä.
+        scoreNumber = GameObject.Find("ScoreNumber").GetComponent<TextMeshProUGUI>();  // En tiedä millä komennolla löydetään tekstikomponentti TMP:stä, joten tässä käytetty tavallista tekstiä.
         
         }
         else
