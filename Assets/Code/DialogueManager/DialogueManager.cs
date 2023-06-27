@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
+    public bool gameOver = false;
+
     DialogueTrigger dialogueTrigger;
     bool keyPress;
     bool startDialogue = false;
@@ -94,6 +96,7 @@ public class DialogueManager : MonoBehaviour
 
         if(sentences.Count == 0)
         {
+            gameOver = true;
             EndDialogue();
             return;
         }
