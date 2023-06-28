@@ -2197,7 +2197,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tekij\xE4t: Niina Majam\xE4ki & Toni Viitala"
+  m_text: "Made by Niina Majam\xE4ki & Toni Viitala"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc0794ed7db7b1f478e5c1657d502c59, type: 2}
   m_sharedMaterial: {fileID: 2006222813836096273, guid: bc0794ed7db7b1f478e5c1657d502c59, type: 2}
