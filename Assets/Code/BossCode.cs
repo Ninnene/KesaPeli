@@ -249,74 +249,74 @@ public class BossCode : MonoBehaviour
 
 
 
-        while ( hitpoints >0)
+        while (hitpoints > 0)
         {
 
-       // Debug.Log("moveTillUp = " + moveTillUp);
+            // Debug.Log("moveTillUp = " + moveTillUp);
 
-        while (transform.position != moveTillUp && hitpoints >0)
-        {
-        transform.position = Vector3.MoveTowards(transform.position, moveTillUp, iPKSpeed * Time.deltaTime);
-        yield return null;
-        }
-            
-
-      //  Debug.Log("moveTillDown = " + moveTillDown);
-
-        while (transform.position != moveTillDown && hitpoints >0)
-        {
-        transform.position = Vector3.MoveTowards(transform.position, moveTillDown, iPKSpeed * Time.deltaTime);
-        yield return null;
-        }
-            if(transform.position == moveTillDown)
-        {
-        repeatMiddleAttack++;
-
-       // Debug.Log("Repeat is : " + repeatMiddleAttack);
-
-
-        if (repeatMiddleAttack >=4)
-        {
-        
-        Debug.Log("Return to spawnposition");
-
-        Debug.Log("Start deactivate weapons");
-            // Deaktivoidaan aseet :
-
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        gameObject.transform.GetChild(1).gameObject.SetActive(false);
-        gameObject.transform.GetChild(2).gameObject.SetActive(false);
-        gameObject.transform.GetChild(3).gameObject.SetActive(false);
-        gameObject.transform.GetChild(4).gameObject.SetActive(false);
-        gameObject.transform.GetChild(5).gameObject.SetActive(false);
-        gameObject.transform.GetChild(6).gameObject.SetActive(false);
-
-        Debug.Log("Weapons deactivated");
-
-        while (transform.position != spawnPosition && hitpoints >0)
-        {
-        transform.position = Vector3.MoveTowards(transform.position, spawnPosition, iPKSpeed * Time.deltaTime);
-        gameObject.GetComponent<MeshFilter>().mesh = normalIPK;
-        yield return null;
-
-        
-        }
-        
-            if(transform.position == spawnPosition && repeatMiddleAttack >= 4 && hitpoints >0)
+            while (transform.position != moveTillUp && hitpoints > 0)
             {
-            ++middleAttackDone;
-
-            cycleNumber++;
-
-            Debug.Log("Cyclenumber = " + cycleNumber);
-
-            startIPKUpDownAttack = true;
-
-            //Debug.Log("Yield break!" + middleAttackDone);
-            yield break;
+                transform.position = Vector3.MoveTowards(transform.position, moveTillUp, iPKSpeed * Time.deltaTime);
+                yield return null;
             }
-        }
-        }
+
+
+            //  Debug.Log("moveTillDown = " + moveTillDown);
+
+            while (transform.position != moveTillDown && hitpoints > 0)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, moveTillDown, iPKSpeed * Time.deltaTime);
+                yield return null;
+            }
+            if (transform.position == moveTillDown)
+            {
+                repeatMiddleAttack++;
+
+                // Debug.Log("Repeat is : " + repeatMiddleAttack);
+
+
+                if (repeatMiddleAttack >= 4)
+                {
+
+                    Debug.Log("Return to spawnposition");
+
+                    Debug.Log("Start deactivate weapons");
+                    // Deaktivoidaan aseet :
+
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(5).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(6).gameObject.SetActive(false);
+
+                    Debug.Log("Weapons deactivated");
+
+                    while (transform.position != spawnPosition && hitpoints > 0)
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, spawnPosition, iPKSpeed * Time.deltaTime);
+                        gameObject.GetComponent<MeshFilter>().mesh = normalIPK;
+                        yield return null;
+
+
+                    }
+
+                    if (transform.position == spawnPosition && repeatMiddleAttack >= 4 && hitpoints > 0)
+                    {
+                        ++middleAttackDone;
+
+                        cycleNumber++;
+
+                        Debug.Log("Cyclenumber = " + cycleNumber);
+
+                        startIPKUpDownAttack = true;
+
+                        //Debug.Log("Yield break!" + middleAttackDone);
+                        yield break;
+                    }
+                }
+            }
         }
     }
 
