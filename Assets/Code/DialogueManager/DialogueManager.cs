@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public Animator textBox;
     public Animator iPK;
     public Animator player;
+    public Animator thanksForPlaying;
 
 
     public Image blackImage;
@@ -120,36 +121,50 @@ public class DialogueManager : MonoBehaviour
         textBox.SetBool("IsOpen", false);
         iPK.SetBool("IsOpen", false);
         StartCoroutine(FadeImage());
-        StartCoroutine(WaitAndLoadNextScene());       
+        StartCoroutine(WaitAndLoadNextScene());    
     }
 
         IEnumerator WaitAndLoadNextScene()
         {
-            // Wait for 10 seconds
-            yield return new WaitForSeconds(3f);
+            // Wait for X seconds
+            yield return new WaitForSeconds(1f);
             // Load the next scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+                if(SceneManager.GetActiveScene().name != "Epilogue")
+                {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+            
+                    if(SceneManager.GetActiveScene().name == "Epilogue")
+                    {
+                        thanksForPlaying.SetBool("IsOpen",true);
+                    }
         }
 
          IEnumerator FadeImage()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
-        // Loop from 0 to 1 in fadeDuration seconds
-        for (float t = 0f; t < 1f; t += Time.deltaTime / fadeDuration)
+        if(thanksForPlaying == true)
         {
-            // Set the alpha value of the image based on t
-            Color newColor = blackImage.color;
-            newColor.a = t;
-            blackImage.color = newColor;
-
-            // Wait for one frame
-            yield return null;
+            fadeDuration = 500;
         }
 
-        // Make sure the image is fully opaque at the end
-        Color finalColor = blackImage.color;
-        finalColor.a = 1f;
-        blackImage.color = finalColor;
+            // Loop from 0 to 1 in fadeDuration seconds
+            for (float t = 0f; t < 1f; t += Time.deltaTime / fadeDuration)
+            {
+                // Set the alpha value of the image based on t
+                Color newColor = blackImage.color;
+                newColor.a = t;
+                blackImage.color = newColor;
+
+                // Wait for one frame
+                yield return null;
+            }
+
+            // Make sure the image is fully opaque at the end
+            Color finalColor = blackImage.color;
+            finalColor.a = 1f;
+            blackImage.color = finalColor;
     }
 }
