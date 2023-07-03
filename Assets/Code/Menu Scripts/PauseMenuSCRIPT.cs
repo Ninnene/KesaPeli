@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using System;
+
 
 public class PauseMenuSCRIPT : MonoBehaviour
 {
 
     private Player playerScript;
-    private UnityEngine.UI.Text  canvasPoints;
+    public TMPro.TMP_Text canvasPoints;
+
 
     public static bool GameIsPaused = false;
 
@@ -69,7 +73,7 @@ public class PauseMenuSCRIPT : MonoBehaviour
     {
         playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
         //canvasPoints = GameObject.Find("ScoreNumber").GetComponent<UnityEngine.UI.Text>();
-        canvasPoints = GameObject.Find("ScoreNumber").GetComponent<Text>();
+        canvasPoints = GameObject.Find("ScoreNumber").GetComponent<TMP_Text>();
 
         playerScript.hits = 3;
         playerScript.powerUpGunLevel = 0;
