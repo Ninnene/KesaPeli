@@ -127,7 +127,7 @@ public class DialogueManager : MonoBehaviour
         IEnumerator WaitAndLoadNextScene()
         {
             // Wait for X seconds
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             // Load the next scene
 
                 if(SceneManager.GetActiveScene().name != "Epilogue")
@@ -138,6 +138,7 @@ public class DialogueManager : MonoBehaviour
                     if(SceneManager.GetActiveScene().name == "Epilogue")
                     {
                         thanksForPlaying.SetBool("IsOpen",true);
+                        player.SetBool("IsOpen", true);
                     }
         }
 
