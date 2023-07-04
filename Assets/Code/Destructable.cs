@@ -5,6 +5,7 @@ using TMPro;
 
 public class Destructable : MonoBehaviour
 {
+    public float normalEnemyHitPoints = 1;
     bool canBeDestoyed = false;
     public int scoreValue = 100;
     
@@ -53,11 +54,20 @@ public class Destructable : MonoBehaviour
             if (!bullet.isEnemy)
             {
                 FindObjectOfType<AudioManagerScript>().Play("enemy damage"); // tämä aktivoi damage äänen
-            LevelController.instance.AddScore(scoreValue); 
-            LevelController.instance.RemoveDestructable();
-            Destroy(gameObject);
-            Destroy(bullet.gameObject);
-            
+
+                if(normalEnemyHitPoints >0)
+                {
+                    --normalEnemyHitPoints;
+                    Destroy(bullet.gameObject);
+                    return;
+                }
+                    else
+                    {
+                    LevelController.instance.AddScore(scoreValue); 
+                    LevelController.instance.RemoveDestructable();
+                    Destroy(gameObject);
+                    Destroy(bullet.gameObject);
+                    }
             }
             
         }
