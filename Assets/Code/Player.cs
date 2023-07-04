@@ -487,7 +487,7 @@ public class Player : MonoBehaviour
             blackImage.color = finalColor;
 
             bossIsDead = GetComponent<BossCode>();
-            if (bossIsDead == null)
+            if (bossIsDead == null && SceneManager.GetActiveScene().name == "Boss")
             {   
                 Debug.Log("bossIsDead");
                  SceneManager.LoadScene("Epilogue");
