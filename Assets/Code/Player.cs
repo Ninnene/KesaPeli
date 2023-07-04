@@ -337,6 +337,7 @@ public class Player : MonoBehaviour
         StartCoroutine(FadeImage());
         StartCoroutine(PlayerDeathMovement());
         StartCoroutine(WaitAndLoadNextScene());
+        healthBar.UpdateHealthBar(hits, pMaxHP);
         
     }
 

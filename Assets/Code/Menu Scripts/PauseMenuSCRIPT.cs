@@ -88,6 +88,7 @@ public class PauseMenuSCRIPT : MonoBehaviour
                 playerScript.gameObject.transform.GetChild(5).gameObject.SetActive(false);
 
                 playerScript.DeactivateShield();
+                
 
         //Debug.Log("Players hits  = " + playerScript.hits);
         //Debug.Log("Players Gunlevel  = " + playerScript.powerUpGunLevel);
