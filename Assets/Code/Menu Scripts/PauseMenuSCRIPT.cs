@@ -13,6 +13,11 @@ public class PauseMenuSCRIPT : MonoBehaviour
     private Player playerScript;
     public TMPro.TMP_Text canvasPoints;
 
+    // Pelaajan hitpointmittarin resetointia varten
+    private FloatingHealtbarP healthBar;
+    private int pMaxHP = 3;
+    private int hits = 3;
+    // /
 
     public static bool GameIsPaused = false;
 
@@ -74,6 +79,9 @@ public class PauseMenuSCRIPT : MonoBehaviour
         playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
         //canvasPoints = GameObject.Find("ScoreNumber").GetComponent<UnityEngine.UI.Text>();
         canvasPoints = GameObject.Find("ScoreNumber").GetComponent<TMP_Text>();
+        healthBar = GameObject.Find("PHP SLD").GetComponent<FloatingHealtbarP>();
+
+        healthBar.UpdateHealthBar(hits, pMaxHP);
 
         playerScript.hits = 3;
         playerScript.powerUpGunLevel = 0;
