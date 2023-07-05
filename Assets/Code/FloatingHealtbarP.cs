@@ -44,14 +44,11 @@ public class FloatingHealtbarP : MonoBehaviour
 
     void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "Level1")
-                        {
-                            gameObject.SetActive(true);
-                        } 
+        
     }
 
     void Update()
-    {
+    {/*
        if (SceneManager.GetActiveScene().name == "Dialogue")
             {
                 gameObject.SetActive(false);   
@@ -63,7 +60,10 @@ public class FloatingHealtbarP : MonoBehaviour
                     }
 
 
-                    
+                    if (SceneManager.GetActiveScene().name == "Level1")
+                        {
+                            gameObject.SetActive(true);
+                        } */
     }
 }
 

@@ -14,7 +14,7 @@ public class HideHealthBar : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         floatingHealthBar = GameObject.Find("PHP SLD").GetComponent<FloatingHealtbarP>();
 
 

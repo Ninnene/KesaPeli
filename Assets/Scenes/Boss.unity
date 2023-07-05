@@ -2659,6 +2659,14 @@ PrefabInstance:
       propertyPath: m_fontColor.g
       value: 0.9098039
       objectReference: {fileID: 0}
+    - target: {fileID: 9196510074284966996, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -475.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196510074284966996, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 146.42
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1215841186, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
     - {fileID: 1682439710, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}

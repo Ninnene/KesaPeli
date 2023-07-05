@@ -80,7 +80,6 @@ public class PauseMenuSCRIPT : MonoBehaviour
         //canvasPoints = GameObject.Find("ScoreNumber").GetComponent<UnityEngine.UI.Text>();
         canvasPoints = GameObject.Find("ScoreNumber").GetComponent<TMP_Text>();
         healthBar = GameObject.Find("PHP SLD").GetComponent<FloatingHealtbarP>();
-
         healthBar.UpdateHealthBar(hits, pMaxHP); // Päivitetään hiparimittari täyteen jos palataan main-menuun.
 
         playerScript.hits = 3;
