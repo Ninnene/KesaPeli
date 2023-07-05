@@ -14,8 +14,8 @@ public class LevelController : MonoBehaviour
     bool startNextLevel = false;
     float nextLevelTimer = 3;
 
-    string[] levels = {"Level1", "Level2, Boss, Epilogue"};
-    int currentLevel = 1;
+    string[] levels = {"Menu","Dialogue","Level1","Level2","Boss","Epilogue"};
+    int currentLevel = 3;
 
 
 
@@ -104,12 +104,14 @@ public class LevelController : MonoBehaviour
     public void AddDestructable()
     {
         numDestructables++;
+        Debug.Log("Add destructable");
 
     }
 
     public void RemoveDestructable()
     {
         numDestructables--;
+        Debug.Log("Destructables left " + numDestructables);
 
         if(numDestructables ==0)
         {
