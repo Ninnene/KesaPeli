@@ -2504,15 +2504,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9196510074284966996, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9196510074284966996, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 30.700012
       objectReference: {fileID: 0}
     - target: {fileID: 9196510074284966996, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 25.300003
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1215841186, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
