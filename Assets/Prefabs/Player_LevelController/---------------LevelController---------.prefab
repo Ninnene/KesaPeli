@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495888aa64de84a40af9ec452155f23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPoints: {fileID: 0}
   pausemenuUI: {fileID: 228875775}
 --- !u!1 &232663394
 GameObject:
@@ -642,6 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495888aa64de84a40af9ec452155f23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPoints: {fileID: 0}
   pausemenuUI: {fileID: 228875775}
 --- !u!1 &1061901694
 GameObject:
@@ -1224,6 +1226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495888aa64de84a40af9ec452155f23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPoints: {fileID: 0}
   pausemenuUI: {fileID: 0}
 --- !u!114 &1372021989
 MonoBehaviour:
@@ -2656,6 +2659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495888aa64de84a40af9ec452155f23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPoints: {fileID: 0}
   pausemenuUI: {fileID: 228875775}
 --- !u!1 &6236981360658239659
 GameObject:
@@ -2947,11 +2951,11 @@ RectTransform:
   m_Father: {fileID: 5780150433105055406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -226.7, y: -133.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 5.700012, y: 5.899994}
   m_SizeDelta: {x: 110.1779, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &561034299771221754
 MonoBehaviour:
   m_ObjectHideFlags: 0
