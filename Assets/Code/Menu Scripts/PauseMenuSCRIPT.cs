@@ -76,6 +76,8 @@ public class PauseMenuSCRIPT : MonoBehaviour
 
     public void ResetAbilities()
     {
+        Debug.Log("ResetAbilities");
+
         playerScript = GameObject.Find("PikkuKala").GetComponent<Player>();
         //canvasPoints = GameObject.Find("ScoreNumber").GetComponent<UnityEngine.UI.Text>();
         canvasPoints = GameObject.Find("ScoreNumber").GetComponent<TMP_Text>();
