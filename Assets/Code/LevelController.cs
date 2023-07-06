@@ -21,7 +21,10 @@ public class LevelController : MonoBehaviour
 
     
     public int score = 0;
-    public TMP_Text scoreNumber;
+    public TMP_Text scoreNumber; 
+    Vector3 scoreNumberVector = new Vector3 (880.4655151367188f,464.5318298339844f,1.7107543945313f);
+
+
 
     private void Awake()        // Kun tämä koodi luodaan tarkistetaan onko instancella arvoa. Jos ei,  asetetaan instance-muuttujan arvoksi ".this" - eli ymmärtääkseni koko koodi. 
     {                           // Seuraavaksi suojataan gameObject tuhoamiselta. Else taas tuhoaa gameObjectin jos niitä on sceneä ladatessa useita
@@ -31,12 +34,12 @@ public class LevelController : MonoBehaviour
         DontDestroyOnLoad(gameObject);          // Tämä koodi käyttää Awake-metodissa DontDestroyOnLoad-metodia(gameObject) 
         
         scoreNumber = GameObject.Find("ScoreNumber").GetComponent<TextMeshProUGUI>();  // En tiedä millä komennolla löydetään tekstikomponentti TMP:stä, joten tässä käytetty tavallista tekstiä.
-        
         }
         else
         {
             Destroy(gameObject);
         }
+
     }
         
 
@@ -77,6 +80,14 @@ public class LevelController : MonoBehaviour
                 nextLevelTimer -= Time.deltaTime;           // Else on tässä kätevä. nextLevelTimeriä vähennetään kunnes edeltävä ehto täyttyy.
             }
         }
+
+        if (SceneManager.GetActiveScene().name == "Epilogue")
+            {
+                scoreNumber.transform.position = scoreNumberVector;
+            }
+
+
+
     }
 
     public void ResetLevel()
