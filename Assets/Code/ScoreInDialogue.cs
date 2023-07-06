@@ -8,6 +8,8 @@ public class ScoreInDialogue : MonoBehaviour
     LevelController epilogueScoreNumber;
 
     public TMP_Text epilogueScoreNumberValue; 
+
+    public TMP_Text ScoreNumberLevel2; 
     int epilogueScore = 0;
 
 
@@ -21,7 +23,7 @@ public class ScoreInDialogue : MonoBehaviour
         
         epilogueScoreNumberValue.text = epilogueScore.ToString();
 
-
+        ScoreNumberLevel2.text = epilogueScore.ToString();
     }
 
     // Update is called once per frame
