@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level2Start : MonoBehaviour
 {
@@ -11,21 +12,58 @@ public class Level2Start : MonoBehaviour
 
     void Start()
     {
-        textStartingPlace = transform.position; // Tekstin aloituspaikka
+        textStartingPlace = transform.position; // Tekstin aloituspaikka 
     }
 
-    // Update is called once per frame
+   
+
+    void Awake() 
+    {
+    }
+
+
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
         StartCoroutine(Level2StartTextMove());
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+        StartCoroutine(Level2StartTextMove());
+        }
+
     }
 
     public IEnumerator Level2StartTextMove()
+{
+    yield return new WaitForSeconds (2);
+
+    transform.position = Vector3.MoveTowards(transform.position, textHiddenPlace, speed * Time.deltaTime);
+
+    // Declare a boolean variable to check if the text has started
+    bool isTextStarted = false;
+
+    if (SceneManager.GetActiveScene().name == "Level2")
     {
-        yield return new WaitForSeconds (2);
+        // Check if the text has not started yet
+        if (!isTextStarted)
+        {
+            // Set the transform position to textStartingPlace
+            transform.position = textStartingPlace;
+
+            // Change the variable to true
+            isTextStarted = true;
+        }
+
+        yield return null;
 
         transform.position = Vector3.MoveTowards(transform.position, textHiddenPlace, speed * Time.deltaTime);
-        
+
         yield return null;
     }
+
+    yield return null;
+}
 }

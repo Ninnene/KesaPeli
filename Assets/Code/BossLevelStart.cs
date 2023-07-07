@@ -18,7 +18,7 @@ public class BossLevelStart : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "level1")
         {
-            bossLevelStart = GameObject.Find("bossLevelStart").GetComponent<BossLevelStart>();
+            bossLevelStart = GameObject.Find("Level2Start!").GetComponent<BossLevelStart>();
 
             Debug.Log("BossStart found!");
 

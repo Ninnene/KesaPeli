@@ -489,9 +489,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -3760
       objectReference: {fileID: 0}
+    - target: {fileID: 232663394, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 362750953, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970323611, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 970323613, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -693,9 +701,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -16.69
       objectReference: {fileID: 0}
+    - target: {fileID: 264882253503892018, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 561034299771221754, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026823546688401161, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_text
+      value: Level  start!
       objectReference: {fileID: 0}
     - target: {fileID: 1238335156541637779, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: hits
@@ -761,9 +777,17 @@ PrefabInstance:
       propertyPath: scoreNumber
       value: 
       objectReference: {fileID: 2014950154}
+    - target: {fileID: 3506567992180032053, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3984772500077801204, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608178631357240198, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5228556058891322859, guid: 42af4dbecfd7a6749944f6efbebd1512, type: 3}
       propertyPath: m_AnchorMax.x
