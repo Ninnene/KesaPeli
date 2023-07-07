@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController instance; // Luodaan luokka "LevelController" jossa on "instance"-muuttuja jota muut luokat voivat käyttää
 
-    uint numDestructables = 0;
+    public int numDestructables = 0;
     bool startNextLevel = false;
     float nextLevelTimer = 3;
 

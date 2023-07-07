@@ -23,6 +23,8 @@ public class PauseMenuSCRIPT : MonoBehaviour
 
     public GameObject pausemenuUI;
 
+    public LevelController levelController;
+
 
     void Start()
     {
@@ -83,10 +85,13 @@ public class PauseMenuSCRIPT : MonoBehaviour
         canvasPoints = GameObject.Find("ScoreNumber").GetComponent<TMP_Text>();
         healthBar = GameObject.Find("PHP SLD").GetComponent<FloatingHealtbarP>();
         healthBar.UpdateHealthBar(hits, pMaxHP); // Päivitetään hiparimittari täyteen jos palataan main-menuun.
+        levelController = GameObject.Find("---------------LevelController---------").GetComponent<LevelController>();
 
         playerScript.hits = 3;
         playerScript.powerUpGunLevel = 0;
         playerScript.speedMultiplier = 1;
+
+        levelController.numDestructables = 0;
 
         canvasPoints.text = "";
 
