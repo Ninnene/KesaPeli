@@ -19,6 +19,8 @@ public class HideHealthBar : MonoBehaviour
 
             if (SceneManager.GetActiveScene().name == "Dialogue")
             {
+                Debug.Log("Dialogue! = Disable player HealthBar!");
+
                 {
                     floatingHealthBar = GameObject.Find("PHP SLD").GetComponent<FloatingHealtbarP>();
 
@@ -27,13 +29,7 @@ public class HideHealthBar : MonoBehaviour
                     
                 }
 
-                    if (SceneManager.GetActiveScene().name == "Epilogue")
-                        {
-                        floatingHealthBar = GameObject.Find("PHP SLD").GetComponent<FloatingHealtbarP>();
-
-                        floatingHealthBar.gameObject.SetActive(false);
-                        //floatingHealthBar.transform.Translate(hiddenPlace);
-                        }
+                    
 
                             /*if (SceneManager.GetActiveScene().name == "Level1")
                             {
@@ -44,6 +40,22 @@ public class HideHealthBar : MonoBehaviour
             }
 
 
+        }
+
+
+        void Awake()
+        {
+            if (SceneManager.GetActiveScene().name == "Epilogue")
+                        {
+                        Debug.Log("Epilogue! = Disable player HealthBar!");
+
+                        floatingHealthBar = GameObject.Find("PHP SLD").GetComponent<FloatingHealtbarP>();
+
+                        floatingHealthBar.gameObject.SetActive(false);
+
+                        
+                        //floatingHealthBar.transform.Translate(hiddenPlace);
+                        }
         }
 
     // Update is called once per frame
