@@ -51,7 +51,7 @@ public class HideHealthBar : MonoBehaviour
             {  
                 
                 
-                if(SceneManager.GetActiveScene().name == "Level1")
+                if(SceneManager.GetActiveScene().name == "Level1" && !floatingHealthBar)
                     {
                         Debug.Log("Scenemanager = Level1");
 
