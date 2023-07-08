@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class Level2Start : MonoBehaviour
 {
     float speed = 5f;
-    Vector2 textStartingPlace;
-    Vector2 textHiddenPlace = new Vector2(0,-356);
+    Vector3 textStartingPlace;
+    Vector3 textHiddenPlace = new Vector3(0,-356,0);
     
+    private bool isCoroutineRunning = false; // Estetään useampi BossTextMove - coroutine
 
     void Start()
     {
@@ -35,9 +36,10 @@ public class Level2Start : MonoBehaviour
         Debug.Log("LEVEL2 Coroutine Start!");
         }
 
-        if (SceneManager.GetActiveScene().name == "Boss")
+        if (SceneManager.GetActiveScene().name == "Boss" && (!isCoroutineRunning))
         {
         StartCoroutine(BossTextMove());
+        isCoroutineRunning = true;
         }
     }
 
@@ -91,6 +93,15 @@ public class Level2Start : MonoBehaviour
 
         // Yield until the next frame
         yield return null;
+
+
+         if(Vector3.Equals(transform.position, textHiddenPlace))
+        {
+            gameObject.SetActive(false);
+            StopCoroutine(BossTextMove());
+            isCoroutineRunning = false;
+        }
+
     }
     }
 
