@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IsoPahaKala : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class IsoPahaKala : MonoBehaviour
     public float ipkLeft = 100f;
     public float ipkTimer = 1000f;
     public float ipkFiringTime = 100f;
+
+    public float level1SlowTimer = 300;
+    public float level2fastTimer = 1000;
+
 
         // Sini
 
@@ -104,7 +109,22 @@ public class IsoPahaKala : MonoBehaviour
 
         ipkTimer += 10;
 
-        if (pos.x > 25.0568f )
+
+
+
+        if (SceneManager.GetActiveScene().name == "Level1" && pos.x > 25.0568f)
+        {
+            ipkTimer = +1000;
+
+            ipkLeft = 100;
+
+            ipkFiringTime = 100;
+
+            return;
+        }
+
+
+            if (SceneManager.GetActiveScene().name == "Level2" && pos.x > 25.0568f)
         {
             ipkTimer = +300;
 
@@ -114,6 +134,7 @@ public class IsoPahaKala : MonoBehaviour
 
             return;
         }
+
 
         transform.position = pos;
 
