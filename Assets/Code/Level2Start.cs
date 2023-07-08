@@ -31,7 +31,8 @@ public class Level2Start : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level2")
         {
-        StartCoroutine(Level2StartTextMove());
+        //StartCoroutine(Level2StartTextMove());
+        Debug.Log("LEVEL2 Coroutine Start!");
         }
 
     }
@@ -45,7 +46,7 @@ public class Level2Start : MonoBehaviour
     // Declare a boolean variable to check if the text has started
     bool isTextStarted = false;
 
-    if (SceneManager.GetActiveScene().name == "Level2")
+    if (SceneManager.GetActiveScene().name == "Level2" || SceneManager.GetActiveScene().name == "Boss" )
     {
         // Check if the text has not started yet
         if (!isTextStarted)
@@ -55,6 +56,10 @@ public class Level2Start : MonoBehaviour
 
             // Change the variable to true
             isTextStarted = true;
+
+            yield return new WaitForSeconds (2);
+
+            transform.position = Vector3.MoveTowards(transform.position, textHiddenPlace, speed * Time.deltaTime);
         }
 
         yield return null;
