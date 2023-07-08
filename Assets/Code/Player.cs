@@ -368,7 +368,7 @@ public class Player : MonoBehaviour
                 {
                     invincible = true;
                 }
-                Destroy(gameObjectHit);
+                //Destroy(gameObjectHit);  Jos tätä käytetään vihollinen tuhoutuu kun siihen törmää. Koodin ongelmana on, että tuhoutumista ei lasketa Destructibleksi jolloin leveli ei etene.
             }
         }
     }
@@ -410,6 +410,8 @@ public class Player : MonoBehaviour
            if (destructable != null)
            {
             Hit(destructable.gameObject);
+            
+
            }
         
 
