@@ -8,7 +8,7 @@ public class Level2Start : MonoBehaviour
     float speed = 5f;
     Vector2 textStartingPlace;
     Vector2 textHiddenPlace = new Vector2(0,-356);
-
+    
 
     void Start()
     {
@@ -35,6 +35,10 @@ public class Level2Start : MonoBehaviour
         Debug.Log("LEVEL2 Coroutine Start!");
         }
 
+        if (SceneManager.GetActiveScene().name == "Boss")
+        {
+        StartCoroutine(BossTextMove());
+        }
     }
 
     public IEnumerator Level2StartTextMove()
@@ -46,7 +50,7 @@ public class Level2Start : MonoBehaviour
     // Declare a boolean variable to check if the text has started
     bool isTextStarted = false;
 
-    if (SceneManager.GetActiveScene().name == "Level2" || SceneManager.GetActiveScene().name == "Boss" )
+    if (SceneManager.GetActiveScene().name == "Level2")   //  || SceneManager.GetActiveScene().name == "Boss"   Tällä saa tekstin näkymään bossissa
     {
         // Check if the text has not started yet
         if (!isTextStarted)
@@ -71,4 +75,23 @@ public class Level2Start : MonoBehaviour
 
     yield return null;
 }
+
+
+    public IEnumerator BossTextMove()
+    {
+        transform.position = textStartingPlace;
+
+    yield return new WaitForSeconds (2);
+
+    // Use a while loop to check the distance between the gameobject and the target position
+    while (Vector3.Distance(transform.position, textHiddenPlace) > 0.1f)
+    {
+        // Move the gameobject towards the target position using MoveTowards
+        transform.position = Vector3.MoveTowards(transform.position, textHiddenPlace, speed * Time.deltaTime);
+
+        // Yield until the next frame
+        yield return null;
+    }
+    }
+
 }
