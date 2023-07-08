@@ -250,7 +250,7 @@ RectTransform:
   m_GameObject: {fileID: 295713411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -871}
-  m_LocalScale: {x: 0.27702156, y: 0.27702156, z: 0.27702156}
+  m_LocalScale: {x: 0.36516982, y: 0.36516982, z: 0.36516982}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1303488077}
@@ -1546,6 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingHealthBar: {fileID: 0}
+  speed: 5
 --- !u!4 &1880308182
 Transform:
   m_ObjectHideFlags: 0
