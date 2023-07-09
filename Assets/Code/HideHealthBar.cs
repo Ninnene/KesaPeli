@@ -65,25 +65,27 @@ public class HideHealthBar : MonoBehaviour
                 
                 if(SceneManager.GetActiveScene().name == "Level1" && !floatingHealthBar)
                     {
-                        Debug.Log("Scenemanager = Level1");
+                        //Debug.Log("Scenemanager = Level1");
 
                         FloatingHealtbarP[] allObjects = Resources.FindObjectsOfTypeAll<FloatingHealtbarP>();
                         foreach (FloatingHealtbarP obj in allObjects)
                             {
-                                Debug.Log("FindObjectsOfTypeAll start");
+                                //Debug.Log("FindObjectsOfTypeAll start");
 
                                     if (obj.CompareTag("PHP SLD"))
                                         {
-                                            Debug.Log("Tag found");
-                                            Debug.Log("obj.gameObject is = " + obj.gameObject);
-                                            Debug.Log("obj.gameObject is active before = " + obj.gameObject.activeSelf);
+                                            //Debug.Log("Tag found");
+                                            //Debug.Log("obj.gameObject is = " + obj.gameObject);
+                                            //Debug.Log("obj.gameObject is active before = " + obj.gameObject.activeSelf);
                                             obj.gameObject.SetActive(true);
-                                            Debug.Log("obj.gameObject is active after = " + obj.gameObject.activeSelf);
+                                            //Debug.Log("obj.gameObject is active after = " + obj.gameObject.activeSelf);
 
                                                 
                                             break;
                                         }
-                                }
+                            }
+
+                            
                     }
                           
             }

@@ -8,19 +8,30 @@ public class Destructable : MonoBehaviour
     public float normalEnemyHitPoints = 1;
     bool canBeDestoyed = false;
     public int scoreValue = 100;
+    Player player;
     
     
     void Start()
     {
      LevelController.instance.AddDestructable();  //Tällä haetaan LevelController-koodi (Sen alussa on kohta "Private void Awake: instance this;" )
+
+     player = GameObject.Find("PikkuKala").GetComponent<Player>(); // Haetaan Player - koodi jotta voidaan lukea playerDeathMovementPaused.
+
+     //Debug.Log("state of playerDeathMovement = " + player.playerDeathMovementPaused); // Haetaan Playeristä 
+
+
     }
 
     // Ase ei ole aktiivinen ennen kuin se on ruudulla
 
     void Update()
     {
-        if (transform.position.x <-3)
+
+
+        if (transform.position.x <-3 && player.playerDeathMovementPaused == false) // playerDeathMovementPaused jos pelaajan kuolinanimaatio on kesken (true) ei vihollista poisteta.
         {
+            Debug.Log("Enemy position <3 & deathmovement = false");
+
             LevelController.instance.RemoveDestructable();
             Destroy(gameObject);
         }
