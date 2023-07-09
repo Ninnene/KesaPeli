@@ -47,7 +47,7 @@ MonoBehaviour:
   powerUpLeveleRequirement: 0
   bullet: {fileID: 5740111021726021133, guid: 68eec986db4deba45961a818ab85bb5f, type: 3}
   autoShoot: 1
-  shootIntervalSeconds: 3
+  shootIntervalSeconds: 5
   shootDelay: 0.1
   isActive: 0
 --- !u!1 &4219127423276338357
@@ -97,8 +97,8 @@ MonoBehaviour:
   powerUpLeveleRequirement: 0
   bullet: {fileID: 5740111021726021133, guid: 68eec986db4deba45961a818ab85bb5f, type: 3}
   autoShoot: 1
-  shootIntervalSeconds: 1
-  shootDelay: 1
+  shootIntervalSeconds: 2
+  shootDelay: 0
   isActive: 0
 --- !u!1 &5547751906156712252
 GameObject:

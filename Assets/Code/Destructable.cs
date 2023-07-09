@@ -37,7 +37,7 @@ public class Destructable : MonoBehaviour
         }
 
 
-        if(transform.position.x < 20.15367 && !canBeDestoyed)
+        if(transform.position.x < 28.15367 && !canBeDestoyed)
         {
             canBeDestoyed = true;
             Gun[] guns = transform.GetComponentsInChildren<Gun>();
