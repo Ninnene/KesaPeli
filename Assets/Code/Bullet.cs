@@ -17,6 +17,11 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, 3.5f);
         DontDestroyOnLoad(gameObject);  //Metodi estää(gameObjectia) tuhoutumasta kun uusi scene ladataan. 
+        
+        if(isEnemy == false)
+        {
+            Destroy(gameObject, 0.8f);
+        }
     }
 
     // Update is called once per frame
