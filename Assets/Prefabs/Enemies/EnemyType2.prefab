@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69062190b134484e98474a8b03d9f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpLeveleRequirement: 0
   bullet: {fileID: 5740111021726021133, guid: 68eec986db4deba45961a818ab85bb5f, type: 3}
   autoShoot: 1
-  shootIntervalSeconds: 2
+  shootIntervalSeconds: 3
   shootDelay: 0.1
   isActive: 0
 --- !u!1 &4219127423276338357
@@ -93,10 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69062190b134484e98474a8b03d9f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpLeveleRequirement: 0
   bullet: {fileID: 5740111021726021133, guid: 68eec986db4deba45961a818ab85bb5f, type: 3}
   autoShoot: 1
-  shootIntervalSeconds: 2
-  shootDelay: 0
+  shootIntervalSeconds: 1
+  shootDelay: 1
   isActive: 0
 --- !u!1 &5547751906156712252
 GameObject:
@@ -244,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888cb92691b32ab478dd779267907d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalEnemyHitPoints: 1
   scoreValue: 100
 --- !u!65 &7761130034397589445
 BoxCollider:
