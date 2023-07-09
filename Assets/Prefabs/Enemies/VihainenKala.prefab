@@ -142,4 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888cb92691b32ab478dd779267907d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalEnemyHitPoints: 5
   scoreValue: 250
