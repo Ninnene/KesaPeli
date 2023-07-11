@@ -115,11 +115,11 @@ public class Player : MonoBehaviour
         moveLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         moveRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
 
-        speedUp = Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift);
+        //speedUp = Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift); // Ei tarvita
         }
 
         //Space ampuu kerran & LCTRL ampuu sarjaa. Tämä voidaan mahdollistaa esimerkiksi power-upilla.
-        shoot = Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl);
+        shoot = Input.GetKeyDown(KeyCode.Space);  //||Input.GetKey(KeyCode.LeftControl); // Ei tarvita.
         if (shoot)
         {
             shoot = false;
